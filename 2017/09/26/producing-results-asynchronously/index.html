@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    异步生成结果 | Herry&#39;s blog
+  </title>
+  <meta name="description" content="">
+  
+  <meta name="keywords" content="
+  
+  ">
+  
+  <meta name="author" content="songcser">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+<script>
+  var _hmt = _hmt || [];
+  (function(){var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?9dc76ff7c27726f611c9dea1a3b894d5";
+    var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();
+</script>
+
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4789341100316359",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://dn-coding-net-production-static.qbox.me/d369021c-643f-480e-ae0a-0f97460665d6.jpg?imageMogr2/auto-orient/format/jpeg/crop/!215x215a39a0/thumbnail/460"> <i class="fa fa-caret-down"></i></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 14 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 1 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 0 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Herry&#39;s blog</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    songcser
+
+    <span class="post-date float-right" title="{{moment(1506448869000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1506448869000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>异步生成结果</h1>
+    <p>Future代表任务的结果还没有生成。事件循环能够监控Future对象的状态来标示完成，运行应用的一部分等待另一部分完成任务。</p>
+<h2 id="编写Future"><a href="#编写Future" class="headerlink" title="编写Future"></a>编写Future</h2><p>Future的行为和协程一样，因此一些有用的等待协程的方法也可以用来等待Future的完成。这个例子将future传递给事件循环的run_until_complete()方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"># asyncio_future_event_loop.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line"></div><div class="line">def mark_done(future, result):</div><div class="line">    print(&apos;setting future result to &#123;!r&#125;&apos;.format(result))</div><div class="line">    future.set_result(result)</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    all_done = asyncio.Future()</div><div class="line"></div><div class="line">    print(&apos;acheduling mark_done&apos;)</div><div class="line">    event_loop.call_soon(mark_done, all_done, &apos;the result&apos;)</div><div class="line"></div><div class="line">    print(&apos;entering event loop&apos;)</div><div class="line">    result = event_loop.run_untile_complete(all_done)</div><div class="line">    print(&apos;returned result: &#123;!r&#125;&apos;.format(result))</div><div class="line">finally:</div><div class="line">    print(&apos;closing event loop&apos;)</div><div class="line">    event_loop.close()</div><div class="line"></div><div class="line">print(&apos;future result: &#123;!r&#125;&apos;.format(all_done.result()))</div></pre></td></tr></table></figure>
+<p>当set_result()方法被调用时Future的state改变了，并且Future实例保存结果以便最后返回结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># python3 asyncio_future_event_loop.py</div><div class="line"></div><div class="line">scheduling mark_done</div><div class="line">entering event loop</div><div class="line">setting future result to &apos;the result&apos;</div><div class="line">returned result: &apos;the result&apos;</div><div class="line">closing event loop</div><div class="line">future result: &apos;the result&apos;</div></pre></td></tr></table></figure>
+<p>Future也可以使用await关键字，如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># asycnio_future_await.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line"></div><div class="line">def mark_done(future, result):</div><div class="line">    print(&apos;setting future result to &#123;!r&#125;&apos;.format(result))</div><div class="line">    future.set_result(result)</div><div class="line"></div><div class="line">async def main(loop):</div><div class="line">    all_done = asyncio.Future()</div><div class="line"></div><div class="line">    print(&apos;scheduling mark_done&apos;)</div><div class="line">    loop.call_soon(mark_done, all_done, &apos;the result&apos;)</div><div class="line"></div><div class="line">    result = await all_done</div><div class="line">    print(&apos;returned result: &#123;!r&#125;&apos;.format(result))</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    event_loop.run_untile_complete(main(event_loop))</div><div class="line">finally:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
+<p>Future的结果通过await返回，因此经常有可能普通协程函数和Future实例使用相同的代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># python3 asyncio_future_await.py</div><div class="line"></div><div class="line">scheduling mark_done</div><div class="line">setting future result to &apos;the result&apos;</div><div class="line">returned result: &apos;the result&apos;</div></pre></td></tr></table></figure>
+<h2 id="Future回调函数"><a href="#Future回调函数" class="headerlink" title="Future回调函数"></a>Future回调函数</h2><p>除了像协程一样工作，Future也可以在执行结束之后调用回调函数。回调函数按照注册的顺序进行调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># asyncio_future_callback.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line">import functools</div><div class="line"></div><div class="line">def callback(future, n):</div><div class="line">    print(&apos;&#123;&#125;: future done: &#123;&#125;&apos;.format(n, future.result()))</div><div class="line"></div><div class="line">async def register_callbacks(all_done):</div><div class="line">    print(&apos;registering callbacks on future&apos;)</div><div class="line">    all_done.add_done_callback(functools.partial(callback, n=1))</div><div class="line">    all_done.add_done_callback(functools.partial(callback, n=2))</div><div class="line"></div><div class="line">async def main(all_done):</div><div class="line">    await register_callbacks(all_done)</div><div class="line">    print(&apos;setting result of future&apos;)</div><div class="line">    all_done.set_result(&apos;the result&apos;)</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    all_done = asyncio.Future()</div><div class="line">    event_loop.run_untile_complete(main(all_done))</div><div class="line">finally:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
+<p>回调函数要求应该有Future实例为第一个参数，传给回调的额外参数使用functools.partial()进行包裹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># python3 asyncio_future_callback.py</div><div class="line"></div><div class="line">registering callbacks on future</div><div class="line">setting result of future</div><div class="line">1: future done: the result</div><div class="line">2: future done: the result</div></pre></td></tr></table></figure>
+<p><a href="https://pymotw.com/3/asyncio/futures.html" target="_blank" rel="external">原文链接</a></p>
+
+  </article>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '09000ea053fee357b238',
+        clientSecret: 'a9b39ea3928ad9e2e30f40bc70d82fc40f5c8207',
+        repo: 'songcser.github.io',
+        owner: 'songcser',
+        admin: ['songcser'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <a href="https://www.songcser.com" class="footer-logo">
+      <!-- <i class="fa fa-github"></i> -->
+      鲁ICP备17046128
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2017 songcser</li>
+      <li><a href="https://www.songcser.com">Home</a></li>
+      
+      <li><a href="https://github.com/songcser">Github</a></li>
+      
+      <li><a href="http://weibo.com/1751043871">Weibo</a></li>
+      
+      <li><a href="http://www.linkedin.com/in/herry-song-4954b85a/">Linkedin</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      <!-- Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a> -->
+      <!-- by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo -->
+        Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+    </div>
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

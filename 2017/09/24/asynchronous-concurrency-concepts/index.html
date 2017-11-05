@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    异步协程概念 | Herry&#39;s blog
+  </title>
+  <meta name="description" content="">
+  
+  <meta name="keywords" content="
+  
+  ">
+  
+  <meta name="author" content="songcser">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+<script>
+  var _hmt = _hmt || [];
+  (function(){var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?9dc76ff7c27726f611c9dea1a3b894d5";
+    var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();
+</script>
+
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4789341100316359",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://dn-coding-net-production-static.qbox.me/d369021c-643f-480e-ae0a-0f97460665d6.jpg?imageMogr2/auto-orient/format/jpeg/crop/!215x215a39a0/thumbnail/460"> <i class="fa fa-caret-down"></i></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 14 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 1 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 0 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Herry&#39;s blog</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    songcser
+
+    <span class="post-date float-right" title="{{moment(1506246130000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1506246130000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>异步协程概念</h1>
+    <p>其他的大多数并发模型是线性写入的，并且依赖于语言运行时或操作系统的底层线程或进程管理来适当的改变程序运行时的上下文。而基于asyncio的应用程序是由应用代码去处理上下文的切换,并且使用正确的技术取决于了解几个相互关联的概念。</p>
+<p>asyncio框架是以事件循环为中心，负责高效处理IO事件，系统事件和应用上下文切换的第一类对象。 提供了几个循环实现，以有效地利用操作系统功能。虽然通常可以自动的选择合理的默认值，但应用程序也可以选择特定的事件循环。这在Windows下是有用的，例如，一些支持外部程序的循环类在进行网络IO时可以提供效率。</p>
+<p>应用程序和事件循环之间的交互需要注册代码运行，在资源可用时，事件循环可用调用应用程序的代码。例如，网络服务器在打开套接字时进行注册以便接收到输入事件。当有新的连接接入或者有数据读取时，事件循环将提醒服务端代码。应用程序代码在当前上下文中没有其他任务做的短期时间内会重新让出控制运行。例如，没有更多的数据从套接字中读取时，服务端将控制权返还给事件循环。</p>
+<p>出让控制权给事件循环的机制依赖于Python的协程，一种特殊的函数能放弃控制权给调用者但不会丢失状态。协程和生成器很相似，事实上在Python 3.5版本以前没有原生的协程对象支持时生成器被用作实现协程。asycnio提供了protocols和transports的基类抽象层使用回调编写代码代替直接写协程。在基类和协程模块这两种方法都通过重新进入事件循环来明确的改变上下文，代替了Python的线程实现中隐式的上下文切换。</p>
+<p>数据结构future代表了还没有完成的任务结果。事件循环会监控Future对象直到完成，应用程序的一部分代码允许等待另一部分完成任务。除了features，asyncio还有以前的其他同步操作例如锁（locks）和信号量（semaphores）。</p>
+<p>Task是Future的子类，能够包装和管理协程的执行。Task在它获取到需要的资源时，会被事件循环调度运行，并且生成结果给其他协程消费。</p>
+<p><a href="https://pymotw.com/3/asyncio/concepts.html" target="_blank" rel="external">原文链接</a></p>
+
+  </article>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '09000ea053fee357b238',
+        clientSecret: 'a9b39ea3928ad9e2e30f40bc70d82fc40f5c8207',
+        repo: 'songcser.github.io',
+        owner: 'songcser',
+        admin: ['songcser'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <a href="https://www.songcser.com" class="footer-logo">
+      <!-- <i class="fa fa-github"></i> -->
+      鲁ICP备17046128
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2017 songcser</li>
+      <li><a href="https://www.songcser.com">Home</a></li>
+      
+      <li><a href="https://github.com/songcser">Github</a></li>
+      
+      <li><a href="http://weibo.com/1751043871">Weibo</a></li>
+      
+      <li><a href="http://www.linkedin.com/in/herry-song-4954b85a/">Linkedin</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      <!-- Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a> -->
+      <!-- by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo -->
+        Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+    </div>
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    子进程交互 | Herry&#39;s blog
+  </title>
+  <meta name="description" content="">
+  
+  <meta name="keywords" content="
+  
+  ">
+  
+  <meta name="author" content="songcser">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+<script>
+  var _hmt = _hmt || [];
+  (function(){var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?9dc76ff7c27726f611c9dea1a3b894d5";
+    var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();
+</script>
+
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4789341100316359",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://dn-coding-net-production-static.qbox.me/d369021c-643f-480e-ae0a-0f97460665d6.jpg?imageMogr2/auto-orient/format/jpeg/crop/!215x215a39a0/thumbnail/460"> <i class="fa fa-caret-down"></i></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 14 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 1 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 0 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Herry&#39;s blog</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    songcser
+
+    <span class="post-date float-right" title="{{moment(1509004689000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1509004689000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>子进程交互</h1>
+    <p>经常需要和其他程序和进程一起工作，利用已经存在的代码不去重写，或者访问Python中不可用的库或特性。和网络IO一样，asyncio包括两个抽象概念来启动其他程序然后进行交互。</p>
+<h2 id="对于Subprocesses使用Protocol-Abstraction"><a href="#对于Subprocesses使用Protocol-Abstraction" class="headerlink" title="对于Subprocesses使用Protocol Abstraction"></a>对于Subprocesses使用Protocol Abstraction</h2><p>这个例子使用协程来启动一个进程运行Unix命令df，寻找磁盘的剩余空间。使用subprocess_exec()启动进程并把它绑定到protocol类，这样就知道如何读取df的命令输出并分析。protocol类的方法被自动调用当subprocess的IO事件发生时。由于stdin和stderr参数都设置为Nore，这些通信管道没有连接到新的进程。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># asyncio_subprocess_protocol.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"><span class="keyword">import</span> functools</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">run_df</span><span class="params">(loop)</span>:</span></div><div class="line">    print(<span class="string">'in run_df'</span>)</div><div class="line"></div><div class="line">    cmd_done = asyncio.Future(loop=loop)</div><div class="line">    factory = functools.partial(DFProtocol, cmd_done)</div><div class="line">    proc = loop.subprocess_exec(</div><div class="line">        factory,</div><div class="line">        <span class="string">'df'</span>, <span class="string">'-hl'</span>,</div><div class="line">        stdin=<span class="keyword">None</span>,</div><div class="line">        stderr=<span class="keyword">None</span>,</div><div class="line">    )</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        print(<span class="string">'launching process'</span>)</div><div class="line">        transport, protocol = <span class="keyword">await</span> proc</div><div class="line">        print(<span class="string">'waiting for process to complete'</span>)</div><div class="line">        <span class="keyword">await</span> cmd_done</div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        transport.close()</div><div class="line"></div><div class="line">    <span class="keyword">return</span> cmd_done.result()</div></pre></td></tr></table></figure>
+<p>DFProtocol类由SubprocessProtocol派生出，定义了类的API来和其他进程通过管道进行通信。done参数期望是Future对象，这样调用者可以监听到进程的完成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DFProtocol</span><span class="params">(asyncio.SubprocessProtocol)</span>:</span></div><div class="line">    </div><div class="line">    FD_NAMES = [<span class="string">'stdin'</span>, <span class="string">'stdout'</span>, <span class="string">'stderr'</span>]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, done_future)</span>:</span></div><div class="line">        self.done = done_future</div><div class="line">        self.buffer = bytearray()</div><div class="line">        super().__init__()</div></pre></td></tr></table></figure>
+<p>和套接字连接一样，当输入管道有新的进程建立时，connection_made()方法被调用。transport参数是BaseSubprocessTransport子类的实例。如果进程配置成可以接收输入，可以通过进程读取数据输出，并且写入数据到进程的输入流。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">connection_made</span><span class="params">(self, transport)</span>:</span></div><div class="line">    print(<span class="string">'process started &#123;&#125;'</span>.format(transport.get_pid()))</div><div class="line">    self.transport = transport</div></pre></td></tr></table></figure>
+<p>当进程生成输出，pipe_data_received()方法被调用，获取存储数据的文件描述符，并且从管道中读取真实数据。protocol类保存了进程的标准输出管道中的最新生成在缓存中的输出。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">pipe_data_received</span><span class="params">(self, fd, data)</span>:</span></div><div class="line">    print(<span class="string">'read &#123;&#125; bytes from &#123;&#125;'</span>.format(len(data), self.FD_NAMES[fd]))</div><div class="line">    <span class="keyword">if</span> fd == <span class="number">1</span>:</div><div class="line">        self.buffer.extend(data)</div></pre></td></tr></table></figure>
+<p>当进程中断，process_exited()被调用。transport对象通过调用get_returncode()方法可以获取进程的退出码。在这个例子中，如果没有error生成，输出在返回之前通过Future实例将被解码分析。如果有error，结果假定是空的。进程退出时run_df()方法设置future的结果，所有它进行清理并且返回结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">process_exited</span><span class="params">(self)</span>:</span></div><div class="line">    print(<span class="string">'process exited'</span>)</div><div class="line">    return_code = self.transport.get_returncode()</div><div class="line">    print(<span class="string">'return code &#123;&#125;'</span>.format(return_code))</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> return_code:</div><div class="line">        cmd_output = bytes(self.buffer).decode()</div><div class="line">        results = self._parse_results(cmd_output)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        results = []</div><div class="line">    self.done.set_result((return_code, results))</div></pre></td></tr></table></figure>
+<p>将命令输出解析成一系列字典，将每个输出行的标题名映射到它的值，并返回结果列表。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_parse_results</span><span class="params">(self, output)</span>:</span></div><div class="line">    print(<span class="string">'parsing results'</span>)</div><div class="line">    <span class="comment"># Output has one row of headers, all single words.</span></div><div class="line">    <span class="comment"># remaining rows are one per filesystem, with columns</span></div><div class="line">    <span class="comment"># matching the headers (assuming that none of the</span></div><div class="line">    <span class="comment"># mount points have whitespace in the names)</span></div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> output:</div><div class="line">        <span class="keyword">return</span> []</div><div class="line">    lines = output.splitlines()</div><div class="line">    headers = lines[<span class="number">0</span>].split()</div><div class="line">    devices = lines[<span class="number">1</span>:]</div><div class="line">    results = [</div><div class="line">        dict(zip(headers, line.split()))</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> devices</div><div class="line">    ]</div><div class="line">    <span class="keyword">return</span> results</div></pre></td></tr></table></figure>
+<p>run_df()协程使用run_until_complete()方法运行，检测结果并且每一个设备的剩余空间被打印。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    return_code, results = event_loop.run_until_complete(</div><div class="line">        run_df(event_loop)</div><div class="line">    )</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    event_loop.close()</div><div class="line"></div><div class="line"><span class="keyword">if</span> return_code:</div><div class="line">    print(<span class="string">'error exit &#123;&#125;'</span>.format(return_code))</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">'\nFree space:'</span>)</div><div class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> results:</div><div class="line">        print(<span class="string">'&#123;Mounted:25&#125;: &#123;Avail&#125;'</span>.format(**r))</div></pre></td></tr></table></figure>
+<p>下面的输出显示所采取步骤的顺序，和在他运行系统上三个设备的剩余空间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_subprocess_protocol.py</div><div class="line"></div><div class="line">in run_df</div><div class="line">launching process</div><div class="line">process started 49675</div><div class="line">waiting for process to complete</div><div class="line">read 332 bytes from stdout</div><div class="line">process exited</div><div class="line">return code 0</div><div class="line">parsing results</div><div class="line"></div><div class="line">Free space:</div><div class="line">/                           : 233Gi</div><div class="line">/Volumes/hubertinternal     : 157Gi</div><div class="line">/Volumes/hubert-tm          : 2.3Ti</div></pre></td></tr></table></figure>
+<h2 id="协程和流调用子进程"><a href="#协程和流调用子进程" class="headerlink" title="协程和流调用子进程"></a>协程和流调用子进程</h2><p>使用协程直接运行进程，而不是通过Protocol子类访问，调用create_subprocess_exec()并且stdout, stderr和stdin连接到管道。协程的返回结果是进程实例产生的子进程，能够管理子进程和进行通信。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># asyncio_subprocess_coroutine.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"><span class="keyword">import</span> asyncio.subprocess</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">run_df</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'in run_df'</span>)</div><div class="line"></div><div class="line">    buffer = bytearray()</div><div class="line"></div><div class="line">    create = asyncio.create_subprocess_exec(</div><div class="line">        <span class="string">'df'</span>, <span class="string">'-hl'</span>,</div><div class="line">        stdout=asyncio.subprocess.PIPE,</div><div class="line">    )</div><div class="line">    print(<span class="string">'launching process'</span>)</div><div class="line">    proc = <span class="keyword">await</span> create</div><div class="line">    print(<span class="string">'process started &#123;&#125;'</span>.format(proc.pid))</div></pre></td></tr></table></figure>
+<p>在这个例子中， 除了命令行参数外，df不需要任何输入，所以下一步就是读取所有的输出。使用Protocol没有控制同一时间读取多少数据。这个例子使用readline()，但是也可以直接调用read()方法读取数据而不是面向行级的。和protocol例子一样，命令的输出进行了缓存，稍后打印出来。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">    line = <span class="keyword">await</span> proc.stdout.readline()</div><div class="line">    print(<span class="string">'read &#123;!r&#125;'</span>.format(line))</div><div class="line">    <span class="keyword">if</span> <span class="keyword">not</span> line:</div><div class="line">        print(<span class="string">'no more output from command'</span>)</div><div class="line">        <span class="keyword">break</span></div><div class="line">    buffer.extend(line)</div></pre></td></tr></table></figure>
+<p>当没有更多输出时，readline()方法返回空字符串因为程序完成。为了保证正确清理进程，下一步是等待进程完全退出。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'waiting for process to complete'</span>)</div><div class="line"><span class="keyword">await</span> proc.wait()</div></pre></td></tr></table></figure>
+<p>有一点是可以检查退出状态，以确定是解析输出还是错误处理，因为它不产生输出。逻辑解析和前面的例子是一样的，但是是独立的函数（这里没有显示），因为没有protocol类来隐藏它。数据解析之后，结果和退出码返回给调用者。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">return_code = proc.returncode</div><div class="line">print(<span class="string">'return code &#123;&#125;'</span>.format(return_code))</div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> return_code:</div><div class="line">    cmd_output = bytes(buffer).decode()</div><div class="line">    results = _parse_results(cmd_output)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    results = []</div><div class="line"></div><div class="line"><span class="keyword">return</span> (return_code, results)</div></pre></td></tr></table></figure>
+<p>主程序和基于protocol的示例看起来相似，因为实现的不同都是独立在run_df()方法中。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    return_code, results = event_loop.run_until_complete(</div><div class="line">        run_df()</div><div class="line">    )</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    event_loop.close()</div><div class="line"></div><div class="line"><span class="keyword">if</span> return_code:</div><div class="line">    print(<span class="string">'error exit &#123;&#125;'</span>.format(return_code))</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">'\nFree space:'</span>)</div><div class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> results:</div><div class="line">        print(<span class="string">'&#123;Mounted:25&#125;: &#123;Avail&#125;'</span>.format(**r))</div></pre></td></tr></table></figure>
+<p>由于df的输出每次读取一行，所以可以不断的显示程序的进度。否则，输出看起来和以前的例子相似。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_subprocess_coroutine.py</div><div class="line"></div><div class="line">in run_df</div><div class="line">launching process</div><div class="line">process started 49678</div><div class="line">read b&apos;Filesystem   Size    Used    Avail   Capacity    iusedifree %iused Mounted on\n&apos;</div><div class="line">read b&apos;/dev/disk2s2 446Gi   213Gi   233Gi   48%     5595508261015132     48%     /\n&apos;</div><div class="line">read b&apos;/dev/disk1   465Gi   307Gi   157Gi   67%     8051492241281172     66%     /Volumes/hubertinternal\n&apos;</div><div class="line">read b&apos;/dev/disk3s2 3.6Ti   1.4Ti   2.3Ti   38%     181837749306480579   37%     /Volumes/hubert-tm\n&apos;</div><div class="line">read b&apos;&apos;</div><div class="line">no more output from command</div><div class="line">waiting for process to complete</div><div class="line">return code 0</div><div class="line">parsing results</div><div class="line"></div><div class="line">Free space:</div><div class="line">/                           : 233Gi</div><div class="line">/Volumes/hubertinternal     : 157Gi</div><div class="line">/Volumes/hubert-tm          : 2.3Ti</div></pre></td></tr></table></figure>
+<h2 id="向子进程发送数据"><a href="#向子进程发送数据" class="headerlink" title="向子进程发送数据"></a>向子进程发送数据</h2><p>以前的例子都是使用一个通信管道从第二个进程读取数据。经常需要向一个命令的进程发送数据。这个例子定义一个协程执行Unix命令tr来转换输入流中的字符。在这个示例中，tr用于将小写字母转换为大写字母。</p>
+<p>to_upper()协程方法采用事件循环和字符串作为参数。它产生第二个进程运行”tr [:lower:] [:upper:]”</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># asyncio_subprocess_coroutine_write.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"><span class="keyword">import</span> asyncio.subprocess</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">to_upper</span><span class="params">(input)</span>:</span></div><div class="line">    print(<span class="string">'in to_upper'</span>)</div><div class="line"></div><div class="line">    create = asyncio.create_subprocess_exec(</div><div class="line">        <span class="string">'tr'</span>, <span class="string">'[:lower:]'</span>, <span class="string">'[:upper:]'</span>,</div><div class="line">        stdout=asyncio.subprocess.PIPE,</div><div class="line">        stdin=asyncio.subprocess.PIPE,</div><div class="line">    )</div><div class="line">    print(<span class="string">'launching process'</span>)</div><div class="line">    proc = <span class="keyword">await</span> create</div><div class="line">    print(<span class="string">'pid &#123;&#125;'</span>.format(proc.pid))</div></pre></td></tr></table></figure>
+<p>下面to_upper()方法使用Process的communicate()方法发送输入字符串到命令行并且异步的读取所有输出结果。和subprocess.Popen版本相同的方法，communicate()方法返回完整的字符串字节输出。如果一个命令产生的数据不适合存放到内存中，那么输入不能一次产生或者输出必须立即处理掉，可以直接使用Process的stdin，stdout和stderr处理而不是调用communicate()。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'communicating with process'</span>)</div><div class="line">stdout, stderr = <span class="keyword">await</span> proc.communicate(input.encode())</div></pre></td></tr></table></figure>
+<p>IO完成之后，等待进程完全退出确保进程清理干净。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(<span class="string">'waiting for process to complete'</span>)</div><div class="line"><span class="keyword">await</span> proc.wait()</div></pre></td></tr></table></figure>
+<p>检查退出码，解码输出字符串，准备好协程的返回值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">return_code = proc.returncode</div><div class="line">print(<span class="string">'return code &#123;&#125;'</span>.format(return_code))</div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> return_code:</div><div class="line">    results = bytes(stdout).decode()</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    results = <span class="string">''</span></div><div class="line"></div><div class="line"><span class="keyword">return</span> (return_code, results)</div></pre></td></tr></table></figure>
+<p>主程序创建message字符串进行转换，并且使用事件循环运行to_upper()和打印结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">MESSAGE = <span class="string">"""</span></div><div class="line"><span class="string">This message will be converted to all caps.</span></div><div class="line"><span class="string">"""</span></div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    return_code, results = event_loop.run_until_complete(</div><div class="line">        to_upper(MESSAGE)</div><div class="line">    )</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    event_loop.close()</div><div class="line"></div><div class="line"><span class="keyword">if</span> return_code:</div><div class="line">    print(<span class="string">'error exit &#123;&#125;'</span>.format(return_code))</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">'Original: &#123;!r&#125;'</span>.format(MESSAGE))</div><div class="line">    print(<span class="string">'Changed : &#123;!r&#125;'</span>.format(results))</div></pre></td></tr></table></figure>
+<p>输出显示了一系列操作和如何进行简单文字信息的转换。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_subprocess_coroutine_write.py</div><div class="line"></div><div class="line">in to_upper</div><div class="line">launching process</div><div class="line">pid 49684</div><div class="line">communicating with process</div><div class="line">waiting for process to complete</div><div class="line">return code 0</div><div class="line">Original: &apos;\nThis message will be converted\nto all caps.\n&apos;</div><div class="line">Changed : &apos;\nTHIS MESSAGE WILL BE CONVERTED\nTO ALL CAPS.\n&apos;</div></pre></td></tr></table></figure>
+<p><a href="https://pymotw.com/3/asyncio/subprocesses.html" target="_blank" rel="external">原文链接</a></p>
+
+  </article>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '09000ea053fee357b238',
+        clientSecret: 'a9b39ea3928ad9e2e30f40bc70d82fc40f5c8207',
+        repo: 'songcser.github.io',
+        owner: 'songcser',
+        admin: ['songcser'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <a href="https://www.songcser.com" class="footer-logo">
+      <!-- <i class="fa fa-github"></i> -->
+      鲁ICP备17046128
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2017 songcser</li>
+      <li><a href="https://www.songcser.com">Home</a></li>
+      
+      <li><a href="https://github.com/songcser">Github</a></li>
+      
+      <li><a href="http://weibo.com/1751043871">Weibo</a></li>
+      
+      <li><a href="http://www.linkedin.com/in/herry-song-4954b85a/">Linkedin</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      <!-- Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a> -->
+      <!-- by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo -->
+        Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+    </div>
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

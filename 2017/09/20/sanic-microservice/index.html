@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    Sanic Micro Service | Herry&#39;s blog
+  </title>
+  <meta name="description" content="">
+  
+  <meta name="keywords" content="
+  
+  ">
+  
+  <meta name="author" content="songcser">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+<script>
+  var _hmt = _hmt || [];
+  (function(){var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?9dc76ff7c27726f611c9dea1a3b894d5";
+    var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();
+</script>
+
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4789341100316359",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://dn-coding-net-production-static.qbox.me/d369021c-643f-480e-ae0a-0f97460665d6.jpg?imageMogr2/auto-orient/format/jpeg/crop/!215x215a39a0/thumbnail/460"> <i class="fa fa-caret-down"></i></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 14 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 1 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 0 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Herry&#39;s blog</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    songcser
+
+    <span class="post-date float-right" title="{{moment(1505870750000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1505870750000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>Sanic Micro Service</h1>
+    <p>基于sanic的微服务基础架构</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>使用python做web开发面临的一个最大的问题就是性能，在解决C10K问题上显的有点吃力。有些异步框架Tornado、Twisted、Gevent 等就是为了解决性能问题。这些框架在性能上有些提升，但是也出现了各种古怪的问题难以解决。</p>
+<p>在python3.6中，官方的异步协程库asyncio正式成为标准。在保留便捷性的同时对性能有了很大的提升,已经出现许多的异步框架使用asyncio。</p>
+<p>使用较早的异步框架是aiohttp，它提供了server端和client端，对asyncio做了很好的封装。但是开发方式和最流行的微框架flask不同，flask开发简单，轻量，高效。</p>
+<p>微服务是最近最火开发模式，它解决了复杂性问题，提高开发效率，便于部署等优点。</p>
+<p>正是结合这些优点, 以Sanic为基础，集成多个流行的库来搭建微服务。 Sanic框架是和Flask相似的异步协程框架，简单轻量，并且性能很高。</p>
+<p>本项目就是以Sanic为基础搭建的微服务框架。</p>
+<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><ul>
+<li><strong>使用sanic异步框架，简单，轻量，高效。</strong></li>
+<li><strong>使用uvloop为核心引擎，使sanic在很多情况下单机并发甚至不亚于Golang。</strong></li>
+<li><strong>使用asyncpg为数据库驱动，进行数据库连接，执行sql语句执行。</strong></li>
+<li><strong>使用aiohttp为Client，对其他微服务进行访问。</strong></li>
+<li><strong>使用peewee为ORM，但是只是用来做模型设计和migration。</strong></li>
+<li><strong>使用opentracing为分布式追踪系统。</strong></li>
+<li><strong>使用unittest做单元测试，并且使用mock来避免访问其他微服务。</strong></li>
+<li><strong>使用swagger做API标准，能自动生成API文档。</strong></li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>项目地址： <a href="https://github.com/songcser/sanic-ms" target="_blank" rel="external">sanic-ms</a></p>
+<p><a href="https://github.com/songcser/sanic-ms/tree/master/examples" target="_blank" rel="external">Example</a></p>
+<h1 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h1><blockquote>
+<p>使用sanic异步框架，有较高的性能，但是使用不当会造成blocking, 对于有IO请求的都要选用异步库。<strong>添加库要慎重</strong>。<br>sanic使用uvloop异步驱动，uvloop基于libuv使用Cython编写，性能比nodejs还要高。</p>
+</blockquote>
+<p>功能说明：</p>
+<h4 id="启动前"><a href="#启动前" class="headerlink" title="启动前"></a>启动前</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">@app.listener(&apos;before_server_start&apos;)</div><div class="line">async def before_srver_start(app, loop):</div><div class="line">    queue = asyncio.Queue()</div><div class="line">    app.queue = queue</div><div class="line">    loop.create_task(consume(queue, app.config.ZIPKIN_SERVER))</div><div class="line">    reporter = AioReporter(queue=queue)</div><div class="line">    tracer = BasicTracer(recorder=reporter)</div><div class="line">    tracer.register_required_propagators()</div><div class="line">    opentracing.tracer = tracer</div><div class="line">    app.db = await ConnectionPool(loop=loop).init(DB_CONFIG)</div></pre></td></tr></table></figure>
+<ul>
+<li>创建DB连接池</li>
+<li>创建Client连接</li>
+<li>创建queue, 消耗span，用于日志追踪</li>
+<li>创建opentracing.tracer进行日志追踪</li>
+</ul>
+<h4 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@app.middleware(&apos;request&apos;)</div><div class="line">async def cros(request):</div><div class="line">    if request.method == &apos;POST&apos; or request.method == &apos;PUT&apos;:</div><div class="line">        request[&apos;data&apos;] = request.json</div><div class="line">    span = before_request(request)</div><div class="line">    request[&apos;span&apos;] = span</div><div class="line"></div><div class="line"></div><div class="line">@app.middleware(&apos;response&apos;)</div><div class="line">async def cors_res(request, response):</div><div class="line">    span = request[&apos;span&apos;] if &apos;span&apos; in request else None</div><div class="line">    if response is None:</div><div class="line">        return response</div><div class="line">    result = &#123;&apos;code&apos;: 0&#125;</div><div class="line">    if not isinstance(response, HTTPResponse):</div><div class="line">        if isinstance(response, tuple) and len(response) == 2:</div><div class="line">            result.update(&#123;</div><div class="line">                &apos;data&apos;: response[0],</div><div class="line">                &apos;pagination&apos;: response[1]</div><div class="line">            &#125;)</div><div class="line">        else:</div><div class="line">            result.update(&#123;&apos;data&apos;: response&#125;)</div><div class="line">        response = json(result)</div><div class="line">        if span:</div><div class="line">            span.set_tag(&apos;http.status_code&apos;, &quot;200&quot;)</div><div class="line">    if span:</div><div class="line">        span.set_tag(&apos;component&apos;, request.app.name)</div><div class="line">        span.finish()</div><div class="line">    return response</div></pre></td></tr></table></figure>
+<ul>
+<li>创建span, 用于日志追踪</li>
+<li>对response进行封装，统一格式</li>
+</ul>
+<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><p>对抛出的异常进行处理，返回统一格式</p>
+<h4 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h4><p>创建task消费queue中对span，用于日志追踪</p>
+<h4 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h4><p>由于使用的是异步框架，可以将一些IO请求并行处理</p>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">async def async_request(datas):</div><div class="line">    # async handler request</div><div class="line">    results = await asyncio.gather(*[data[2] for data in datas])</div><div class="line">    for index, obj in enumerate(results):</div><div class="line">        data = datas[index]</div><div class="line">        data[0][data[1]] = results[index]</div><div class="line"></div><div class="line">@user_bp.get(&apos;/&lt;id:int&gt;&apos;)</div><div class="line">@doc.summary(&quot;get user info&quot;)</div><div class="line">@doc.description(&quot;get user info by id&quot;)</div><div class="line">@doc.produces(Users)</div><div class="line">async def get_users_list(request, id):</div><div class="line">    async with request.app.db.acquire(request) as cur:</div><div class="line">        record = await cur.fetch(</div><div class="line">            &quot;&quot;&quot; SELECT * FROM users WHERE id = $1 &quot;&quot;&quot;, id)</div><div class="line">        datas = [</div><div class="line">            [record, &apos;city_id&apos;, get_city_by_id(request, record[&apos;city_id&apos;])]</div><div class="line">            [record, &apos;role_id&apos;, get_role_by_id(request, record[&apos;role_id&apos;])]</div><div class="line">        ]</div><div class="line">        await async_request(datas)</div><div class="line">        return record</div></pre></td></tr></table></figure>
+<p>get_city_by_id, get_role_by_id是并行处理。</p>
+<h4 id="相关连接"><a href="#相关连接" class="headerlink" title="相关连接"></a>相关连接</h4><p><a href="https://github.com/channelcat/sanic" target="_blank" rel="external">sanic</a></p>
+<h1 id="模型设计-amp-ORM"><a href="#模型设计-amp-ORM" class="headerlink" title="模型设计 &amp; ORM"></a>模型设计 &amp; ORM</h1><blockquote>
+<p>Peewee is a simple and small ORM. It has few (but expressive) concepts, making it easy to learn and intuitive to use。</p>
+<p>ORM使用peewee, 只是用来做模型设计和migration, 数据库操作使用asyncpg。</p>
+</blockquote>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"># models.py</div><div class="line"></div><div class="line">class Users(Model):</div><div class="line">    id = PrimaryKeyField()</div><div class="line">    create_time = DateTimeField(verbose_name=&apos;create time&apos;,</div><div class="line">                                default=datetime.datetime.utcnow)</div><div class="line">    name = CharField(max_length=128, verbose_name=&quot;user&apos;s name&quot;)</div><div class="line">    age = IntegerField(null=False, verbose_name=&quot;user&apos;s age&quot;)</div><div class="line">    sex = CharField(max_length=32, verbose_name=&quot;user&apos;s sex&quot;)</div><div class="line">    city_id = IntegerField(verbose_name=&apos;city for user&apos;, help_text=CityApi)</div><div class="line">    role_id = IntegerField(verbose_name=&apos;role for user&apos;, help_text=RoleApi)</div><div class="line"></div><div class="line">    class Meta:</div><div class="line">        db_table = &apos;users&apos;</div><div class="line"></div><div class="line"></div><div class="line"># migrations.py</div><div class="line"></div><div class="line">from sanic_ms.migrations import MigrationModel, info, db</div><div class="line"></div><div class="line">class UserMigration(MigrationModel):</div><div class="line">    _model = Users</div><div class="line"></div><div class="line">    # @info(version=&quot;v1&quot;)</div><div class="line">    # def migrate_v1(self):</div><div class="line">    #     migrate(self.add_column(&apos;sex&apos;))</div><div class="line"></div><div class="line">def migrations():</div><div class="line">    try:</div><div class="line">        um = UserMigration()</div><div class="line">        with db.transaction():</div><div class="line">            um.auto_migrate()</div><div class="line">            print(&quot;Success Migration&quot;)</div><div class="line">    except Exception as e:</div><div class="line">        raise e</div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    migrations()</div></pre></td></tr></table></figure>
+<ul>
+<li>运行命令 python migrations.py</li>
+<li>migrate_v1函数添加字段sex, 在BaseModel中要先添加name字段</li>
+<li>info装饰器会创建表migrate_record来记录migrate，version每个model中必须唯一，使用version来记录是否执行过，还可以记录author，datetime</li>
+<li>migrate函数必须以<strong>migrate_</strong>开头</li>
+</ul>
+<h4 id="相关连接-1"><a href="#相关连接-1" class="headerlink" title="相关连接"></a>相关连接</h4><p><a href="http://docs.peewee-orm.com/en/latest/" target="_blank" rel="external">peewee</a></p>
+<h1 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h1><blockquote>
+<p><strong>asyncpg is the fastest driver among common Python, NodeJS and Go implementations</strong></p>
+<p>使用asyncpg为数据库驱动, 对数据库连接进行封装, 执行数据库操作。</p>
+<p>不使用ORM做数据库操作，一个原因是性能，ORM会有性能的损耗，并且无法使用asyncpg高性能库。另一个是单个微服务是很简单的，表结构不会很复杂，简单的SQL语句就可以处理来，没必要引入ORM。使用peewee只是做模型设计</p>
+</blockquote>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sql = &quot;SELECT * FROM users WHERE name=$1&quot;</div><div class="line">name = &quot;test&quot;</div><div class="line">async with request.app.db.acquire(request) as cur:</div><div class="line">    data = await cur.fetchrow(sql, name)</div><div class="line"></div><div class="line">async with request.app.db.transaction(request) as cur:</div><div class="line">    data = await cur.fetchrow(sql, name)</div></pre></td></tr></table></figure>
+<ul>
+<li>acquire() 函数为非事务, 对于只涉及到查询的使用非事务，可以提高查询效率</li>
+<li>tansaction() 函数为事务操作，对于增删改必须使用事务操作</li>
+<li>传入request参数是为了获取到span，用于日志追踪</li>
+<li><strong>TODO</strong>  数据库读写分离</li>
+</ul>
+<h4 id="相关连接-2"><a href="#相关连接-2" class="headerlink" title="相关连接"></a>相关连接</h4><p><a href="https://github.com/MagicStack/asyncpg" target="_blank" rel="external">asyncpg</a><br><a href="https://magic.io/blog/asyncpg-1m-rows-from-postgres-to-python/" target="_blank" rel="external">benchmarks</a></p>
+<h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><blockquote>
+<p>使用aiohttp中的client，对客户端进行了简单的封装，用于微服务之间访问。</p>
+<p>Don’t create a session per request. Most likely you need a session per application which performs all requests altogether.<br>A session contains a connection pool inside, connection reusage and keep-alives (both are on by default) may speed up total performance.</p>
+</blockquote>
+<p>Example: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@app.listener(&apos;before_server_start&apos;)</div><div class="line">async def before_srver_start(app, loop):</div><div class="line">    app.client =  Client(loop, url=&apos;http://host:port&apos;)</div><div class="line"></div><div class="line">async def get_role_by_id(request, id):</div><div class="line">    cli = request.app.client.cli(request)</div><div class="line">    async with cli.get(&apos;/cities/&#123;&#125;&apos;.format(id)) as res:</div><div class="line">        return await res.json()</div><div class="line"></div><div class="line">@app.listener(&apos;before_server_stop&apos;)</div><div class="line">async def before_server_stop(app, loop):</div><div class="line">    app.client.close()</div></pre></td></tr></table></figure>
+<p>对于访问不同的微服务可以创建多个不同的client，这样每个client都会keep-alives</p>
+<h4 id="相关连接-3"><a href="#相关连接-3" class="headerlink" title="相关连接"></a>相关连接</h4><p><a href="http://aiohttp.readthedocs.io/en/stable/client.html" target="_blank" rel="external">aiohttp</a></p>
+<h2 id="日志-amp-分布式追踪系统"><a href="#日志-amp-分布式追踪系统" class="headerlink" title="日志 &amp; 分布式追踪系统"></a>日志 &amp; 分布式追踪系统</h2><blockquote>
+<p>使用官方logging, 配置文件为logging.yml, sanic版本要0.6.0及以上。JsonFormatter将日志转成json格式，用于输入到ES</p>
+<p>Enter OpenTracing: by offering consistent, expressive, vendor-neutral APIs for popular platforms, OpenTracing makes it easy for developers to add (or switch) tracing implementations with an O(1) configuration change. OpenTracing also offers a lingua franca for OSS instrumentation and platform-specific tracing helper libraries. Please refer to the Semantic Specification.</p>
+</blockquote>
+<h3 id="装饰器logger"><a href="#装饰器logger" class="headerlink" title="装饰器logger"></a>装饰器logger</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@logger(type=&apos;method&apos;, category=&apos;test&apos;, detail=&apos;detail&apos;, description=&quot;des&quot;, tracing=True, level=logging.INFO)</div><div class="line">async def get_city_by_id(request, id):</div><div class="line">    cli = request.app.client.cli(request)</div></pre></td></tr></table></figure>
+<ul>
+<li>type: 日志类型，如 method, route</li>
+<li>category: 日志类别，默认为app的name</li>
+<li>detail: 日志详细信息</li>
+<li>description: 日志描述，默认为函数的注释</li>
+<li>tracing: 日志追踪，默认为True</li>
+<li>level: 日志级别，默认为INFO</li>
+</ul>
+<h3 id="分布式追踪系统"><a href="#分布式追踪系统" class="headerlink" title="分布式追踪系统"></a>分布式追踪系统</h3><ul>
+<li>OpenTracing是以Dapper，Zipkin等分布式追踪系统为依据, 建立了统一的标准。</li>
+<li>Opentracing跟踪每一个请求，记录请求所经过的每一个微服务，以链条的方式串联起来，对分析微服务的性能瓶颈至关重要。</li>
+<li>使用opentracing框架，但是在输出时转换成zipkin格式。 因为大多数分布式追踪系统考虑到性能问题，都是使用的thrift进行通信的，本着简单，Restful风格的精神，没有使用RPC通信。以日志的方式输出, 可以使用fluentd, logstash等日志收集再输入到Zipkin。Zipkin是支持HTTP输入的。</li>
+<li>生成的span先无阻塞的放入queue中，在task中消费队列的span。后期可以添加上采样频率。</li>
+<li>对于DB，Client都加上了tracing</li>
+</ul>
+<h4 id="相关连接-4"><a href="#相关连接-4" class="headerlink" title="相关连接"></a>相关连接</h4><p><a href="https://github.com/opentracing/opentracing-python" target="_blank" rel="external">opentracing</a><br><a href="https://github.com/openzipkin/zipkin" target="_blank" rel="external">zipkin</a><br><a href="https://uber.github.io/jaeger/" target="_blank" rel="external">jaeger</a></p>
+<h1 id="API接口"><a href="#API接口" class="headerlink" title="API接口"></a>API接口</h1><blockquote>
+<p>api文档使用swagger标准。</p>
+</blockquote>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">from sanic_ms import doc</div><div class="line"></div><div class="line">@user_bp.post(&apos;/&apos;)</div><div class="line">@doc.summary(&apos;create user&apos;)</div><div class="line">@doc.description(&apos;create user info&apos;)</div><div class="line">@doc.consumes(Users)</div><div class="line">@doc.produces(&#123;&apos;id&apos;: int&#125;)</div><div class="line">async def create_user(request):</div><div class="line">    data = request[&apos;data&apos;]</div><div class="line">    async with request.app.db.transaction(request) as cur:</div><div class="line">        record = await cur.fetchrow(</div><div class="line">            &quot;&quot;&quot; INSERT INTO users(name, age, city_id, role_id)</div><div class="line">                VALUES($1, $2, $3, $4, $5)</div><div class="line">                RETURNING id</div><div class="line">            &quot;&quot;&quot;, data[&apos;name&apos;], data[&apos;age&apos;], data[&apos;city_id&apos;], data[&apos;role_id&apos;]</div><div class="line">        )</div><div class="line">        return &#123;&apos;id&apos;: record[&apos;id&apos;]&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>summary: api概要</li>
+<li>description: 详细描述</li>
+<li>consumes: request的body数据</li>
+<li>produces: response的返回数据</li>
+<li>tag: API标签</li>
+<li>在consumes和produces中传入的参数可以是peewee的model,会解析model生成API数据, 在field字段的help_text参数来表示引用对象</li>
+<li><a href="http://host:ip/openapi/spec.json" target="_blank" rel="external">http://host:ip/openapi/spec.json</a> 获取生成的json数据</li>
+</ul>
+<h4 id="相关连接-5"><a href="#相关连接-5" class="headerlink" title="相关连接"></a>相关连接</h4><p><a href="https://swagger.io/" target="_blank" rel="external">swagger</a></p>
+<h1 id="Response-数据"><a href="#Response-数据" class="headerlink" title="Response 数据"></a>Response 数据</h1><p>在返回时，不要返回sanic的response，直接返回原始数据，会在Middleware中对返回的数据进行处理，返回统一的格式，具体的格式可以[查看]</p>
+<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><blockquote>
+<p>单元测试使用unittest。 mock是自己创建了MockClient，因为unittest还没有asyncio的mock，并且sanic的测试接口也是发送request请求，所以比较麻烦. 后期可以使用pytest。</p>
+</blockquote>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">from sanic_ms.tests import APITestCase</div><div class="line">from server import app</div><div class="line"></div><div class="line">class TestCase(APITestCase):</div><div class="line">    _app = app</div><div class="line">    _blueprint = &apos;visit&apos;</div><div class="line"></div><div class="line">    def setUp(self):</div><div class="line">        super(TestCase, self).setUp()</div><div class="line">        self._mock.get(&apos;/cities/1&apos;,</div><div class="line">                       payload=&#123;&apos;id&apos;: 1, &apos;name&apos;: &apos;shanghai&apos;&#125;)</div><div class="line">        self._mock.get(&apos;/roles/1&apos;,</div><div class="line">                       payload=&#123;&apos;id&apos;: 1, &apos;name&apos;: &apos;shanghai&apos;&#125;)</div><div class="line"></div><div class="line">    def test_create_user(self):</div><div class="line">        data = &#123;</div><div class="line">            &apos;name&apos;: &apos;test&apos;,</div><div class="line">            &apos;age&apos;: 2,</div><div class="line">            &apos;city_id&apos;: 1,</div><div class="line">            &apos;role_id&apos;: 1,</div><div class="line">        &#125;</div><div class="line">        res = self.client.create_user(data=data)</div><div class="line">        body = ujson.loads(res.text)</div><div class="line">        self.assertEqual(res.status, 200)</div></pre></td></tr></table></figure>
+<ul>
+<li>其中_blueprint为blueprint名称</li>
+<li>在setUp函数中，使用_mock来注册mock信息, 这样就不会访问真实的服务器, payload为返回的body信息</li>
+<li>使用client变量调用各个函数, data为body信息，params为路径的参数信息，其他参数是route的参数</li>
+</ul>
+<h3 id="代码覆盖"><a href="#代码覆盖" class="headerlink" title="代码覆盖"></a>代码覆盖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">coverage erase</div><div class="line">coverage run --source . -m sanic_ms tests</div><div class="line">coverage xml -o reports/coverage.xml</div><div class="line">coverage2clover -i reports/coverage.xml -o reports/clover.xml</div><div class="line">coverage html -d reports</div></pre></td></tr></table></figure>
+<ul>
+<li>coverage2colver 是将coverage.xml 转换成 clover.xml，bamboo需要的格式是clover的。</li>
+</ul>
+<h4 id="相关连接-6"><a href="#相关连接-6" class="headerlink" title="相关连接"></a>相关连接</h4><p><a href="https://docs.python.org/3/library/unittest.html" target="_blank" rel="external">unittest</a><br><a href="https://coverage.readthedocs.io/en/coverage-4.4.1/" target="_blank" rel="external">coverage</a></p>
+<h1 id="异常处理-1"><a href="#异常处理-1" class="headerlink" title="异常处理"></a>异常处理</h1><blockquote>
+<p>使用 app.error_handler = CustomHander() 对抛出的异常进行处理</p>
+</blockquote>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from sanic_ms.exception import ServerError</div><div class="line"></div><div class="line">@visit_bp.delete(&apos;/users/&lt;id:int&gt;&apos;)</div><div class="line">async def del_user(request, id):</div><div class="line">    raise ServerError(error=&apos;内部错误&apos;,code=10500, message=&quot;msg&quot;)</div></pre></td></tr></table></figure>
+<ul>
+<li>code: 错误码，无异常时为0，其余值都为异常</li>
+<li>message: 状态码信息</li>
+<li>error: 自定义错误信息</li>
+<li>status_code: http状态码，使用标准的http状态码</li>
+</ul>
+
+  </article>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '09000ea053fee357b238',
+        clientSecret: 'a9b39ea3928ad9e2e30f40bc70d82fc40f5c8207',
+        repo: 'songcser.github.io',
+        owner: 'songcser',
+        admin: ['songcser'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <a href="https://www.songcser.com" class="footer-logo">
+      <!-- <i class="fa fa-github"></i> -->
+      鲁ICP备17046128
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2017 songcser</li>
+      <li><a href="https://www.songcser.com">Home</a></li>
+      
+      <li><a href="https://github.com/songcser">Github</a></li>
+      
+      <li><a href="http://weibo.com/1751043871">Weibo</a></li>
+      
+      <li><a href="http://www.linkedin.com/in/herry-song-4954b85a/">Linkedin</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      <!-- Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a> -->
+      <!-- by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo -->
+        Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+    </div>
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

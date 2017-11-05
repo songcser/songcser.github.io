@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    使用SSL | Herry&#39;s blog
+  </title>
+  <meta name="description" content="">
+  
+  <meta name="keywords" content="
+  
+  ">
+  
+  <meta name="author" content="songcser">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+<script>
+  var _hmt = _hmt || [];
+  (function(){var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?9dc76ff7c27726f611c9dea1a3b894d5";
+    var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();
+</script>
+
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4789341100316359",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://dn-coding-net-production-static.qbox.me/d369021c-643f-480e-ae0a-0f97460665d6.jpg?imageMogr2/auto-orient/format/jpeg/crop/!215x215a39a0/thumbnail/460"> <i class="fa fa-caret-down"></i></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 14 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 1 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 0 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Herry&#39;s blog</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    songcser
+
+    <span class="post-date float-right" title="{{moment(1508752235000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1508752235000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>使用SSL</h1>
+    <p>asyncio内置支持在套接字上启用SSL通信。通过将SSLContext实例传递给协程来创建服务器或者客户端链接，可支持并确保在将套接字交给应用程序使用之前启用了SSL协议。</p>
+<p>比以前章节中以协程为基础的服务端和客户端更新了一些小变化。首先创建证书和key文件。使用下面命令生成自签名证书。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ openssl req -newkey rsa:2048 -nodes -keyout pymotw.key -x509 -days 365 -out pymotw.crt</div></pre></td></tr></table></figure>
+<p>openssl命令将提示生成证书的几个值，然后生成需要的输出文件。</p>
+<p>在以前的服务端例子中，不安全的socket使用start_server()来创建监听的套接字。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">factory = asyncio.start_server(echo, *SERVER_ADDRESS)</div><div class="line">server = event_loop.run_until_complete(factory)</div></pre></td></tr></table></figure>
+<p>为了加入编码认证，创建带证书和刚生成的key的SSLContext，然后传递给start_server()方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># The certificate is created with pymotw.com as the hostname,</span></div><div class="line"><span class="comment"># which will not match when the example code runs elsewhere,</span></div><div class="line"><span class="comment"># so disable hostname verification</span></div><div class="line">ssl_context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)</div><div class="line">ssl_context.check_hostname = <span class="keyword">False</span></div><div class="line">ssl_context.load_cert_chain(<span class="string">'pymotw.crt'</span>, <span class="string">'pymotw.key'</span>)</div><div class="line"></div><div class="line"><span class="comment"># Create the server and let the loop finish the coroutine before</span></div><div class="line"><span class="comment"># starting the real event loop.</span></div><div class="line">factory = asyncio.start_server(echo, *SERVER_ADDRESS, ssl=ssl_context)</div></pre></td></tr></table></figure>
+<p>客户端需要相似的改变。老版本使用open_connection()来创建套接字链接到服务端。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reader, writer = <span class="keyword">await</span> asyncio.open_connection(*address)</div></pre></td></tr></table></figure>
+<p>也需要SSLContext来保护客户端的套接字。客户端身份不需要强制，只需要加载证书。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># The certificate is created with pymotw.com as the hostname,</span></div><div class="line"><span class="comment"># which will not match when the example code runs</span></div><div class="line"><span class="comment"># elsewhere, so disable hostname verification.</span></div><div class="line">ssl_context = ssl.create_default_context(</div><div class="line">    ssl.Purpose.SERVER_AUTH,</div><div class="line">)</div><div class="line">ssl_context.check_hostname = <span class="keyword">False</span></div><div class="line">ssl_context.load_verify_locations(<span class="string">'pymotw.crt'</span>)</div><div class="line">reader, writer = <span class="keyword">await</span> asyncio.open_connection(</div><div class="line">    *server_address, ssl=ssl_context</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>在客户端需要一个其他小的改变。因为SSL连接不支持发送end-of-file(EOF)，客户端使用NULL字节作为消息终止。</p>
+<p>老版本的客户端使用write_eof()发送给loop。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># This could be writer.writelines() except that</span></div><div class="line"><span class="comment"># would make it harder to show each part of the message</span></div><div class="line"><span class="comment"># being sent.</span></div><div class="line"><span class="keyword">for</span> msg <span class="keyword">in</span> messages:</div><div class="line">    writer.write(msg)</div><div class="line">    log.debug(<span class="string">'sending &#123;!r&#125;'</span>.format(msg))</div><div class="line"><span class="keyword">if</span> writer.can_write_eof():</div><div class="line">    writer.write_eof()</div><div class="line"><span class="keyword">await</span> writer.drain()</div></pre></td></tr></table></figure>
+<p>新版本发送零字节(b’\x00’).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># This could be writer.writelines() except that</span></div><div class="line"><span class="comment"># would make it harder to show each part of the message</span></div><div class="line"><span class="comment"># being sent.</span></div><div class="line"><span class="keyword">for</span> msg <span class="keyword">in</span> messages:</div><div class="line">    writer.write(msg)</div><div class="line">    log.debug(<span class="string">'sending &#123;!r&#125;'</span>.format(msg))</div><div class="line"><span class="comment"># SSL does not support EOF, so send a null byte to indicate</span></div><div class="line"><span class="comment"># the end of the message.</span></div><div class="line">writer.write(<span class="string">b'\x00'</span>)</div><div class="line"><span class="keyword">await</span> writer.drain()</div></pre></td></tr></table></figure>
+<p>服务端的echo()协程方法必须寻找NULL字节，在接收到时关闭客户端连接。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">echo</span><span class="params">(reader, writer)</span>:</span></div><div class="line">    address = writer.get_extra_info(<span class="string">'peername'</span>)</div><div class="line">    log = logging.getLogger(<span class="string">'echo_&#123;&#125;_&#123;&#125;'</span>.format(*address))</div><div class="line">    log.debug(<span class="string">'connection accepted'</span>)</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        data = <span class="keyword">await</span> reader.read(<span class="number">128</span>)</div><div class="line">        terminate = data.endswith(<span class="string">b'\x00'</span>)</div><div class="line">        data = data.rstrip(<span class="string">b'\x00'</span>)</div><div class="line">        <span class="keyword">if</span> data:</div><div class="line">            log.debug(<span class="string">'received &#123;!r&#125;'</span>.format(data))</div><div class="line">            writer.write(data)</div><div class="line">            <span class="keyword">await</span> writer.drain()</div><div class="line">            log.debug(<span class="string">'sent &#123;!r&#125;'</span>.format(data))</div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> data <span class="keyword">or</span> terminate:</div><div class="line">            log.debug(<span class="string">'message terminated, closing connection'</span>)</div><div class="line">            writer.close()</div><div class="line">            <span class="keyword">return</span></div></pre></td></tr></table></figure>
+<p>在一个窗口启动服务端，在另一个窗口运行客户端，生成如下输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_echo_server_ssl.py</div><div class="line">asyncio: Using selector: KqueueSelector</div><div class="line">main: starting up on localhost port 10000</div><div class="line">echo_::1_53957: connection accepted</div><div class="line">echo_::1_53957: received b&apos;This is the message. &apos;</div><div class="line">echo_::1_53957: sent b&apos;This is the message. &apos;</div><div class="line">echo_::1_53957: received b&apos;It will be sent in parts. &apos;</div><div class="line">echo_::1_53957: sent b&apos;It will be sent in parts.&apos;</div><div class="line">echo_::1_53957: message terminated, closing connection</div><div class="line"></div><div class="line">$ python3 asyncio_echo_client_ssl.py</div><div class="line">asyncio: Using selector: KqueueSelector</div><div class="line">echo_client: connecting to localhost port 10000</div><div class="line">echo_client: sending b&apos;This is the message.&apos;</div><div class="line">echo_client: sending b&apos;It will be sent &apos;</div><div class="line">echo_client: sending b&apos;in parts.&apos;</div><div class="line">echo_client: waiting for response</div><div class="line">echo_client: received b&apos;This is the message.&apos;</div><div class="line">echo_client: received b&apos;It will be sent in parts.&apos;</div><div class="line">echo_client: closing</div><div class="line">main: closing event loop</div></pre></td></tr></table></figure>
+<p><a href="https://pymotw.com/3/asyncio/ssl.html" target="_blank" rel="external">原文链接</a></p>
+
+  </article>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '09000ea053fee357b238',
+        clientSecret: 'a9b39ea3928ad9e2e30f40bc70d82fc40f5c8207',
+        repo: 'songcser.github.io',
+        owner: 'songcser',
+        admin: ['songcser'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <a href="https://www.songcser.com" class="footer-logo">
+      <!-- <i class="fa fa-github"></i> -->
+      鲁ICP备17046128
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2017 songcser</li>
+      <li><a href="https://www.songcser.com">Home</a></li>
+      
+      <li><a href="https://github.com/songcser">Github</a></li>
+      
+      <li><a href="http://weibo.com/1751043871">Weibo</a></li>
+      
+      <li><a href="http://www.linkedin.com/in/herry-song-4954b85a/">Linkedin</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      <!-- Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a> -->
+      <!-- by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo -->
+        Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+    </div>
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

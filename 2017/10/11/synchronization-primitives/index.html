@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    同步原语 | Herry&#39;s blog
+  </title>
+  <meta name="description" content="">
+  
+  <meta name="keywords" content="
+  
+  ">
+  
+  <meta name="author" content="songcser">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+<script>
+  var _hmt = _hmt || [];
+  (function(){var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?9dc76ff7c27726f611c9dea1a3b894d5";
+    var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm, s);})();
+</script>
+
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4789341100316359",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://dn-coding-net-production-static.qbox.me/d369021c-643f-480e-ae0a-0f97460665d6.jpg?imageMogr2/auto-orient/format/jpeg/crop/!215x215a39a0/thumbnail/460"> <i class="fa fa-caret-down"></i></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 14 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 1 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 0 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Herry&#39;s blog</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    songcser
+
+    <span class="post-date float-right" title="{{moment(1507687255000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1507687255000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>同步原语</h1>
+    <p>尽管asyncio应用经常是单线程进程运行，但是也同样可以同步应用构建。每一个coroutine或task可能在不可预测的顺序执行，基于延迟、IO中断和其他事件。为了支持安全同步，asyncio提供了和threading和multiprocessing模块相同的低水平的原始接口。</p>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p>锁可以保证访问共享资源。只有加锁的才能使用资源。多个试图获取锁的将会阻塞住以便同一时间只有一个获取锁。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># asyncio_lock.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"><span class="keyword">import</span> functools</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">unlock</span><span class="params">(lock)</span>:</span></div><div class="line">    print(<span class="string">'callback releasing lock'</span>)</div><div class="line">    lock.release()</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">coro1</span><span class="params">(lock)</span>:</span></div><div class="line">    print(<span class="string">'coro1 waiting for the lock'</span>)</div><div class="line">    <span class="keyword">with</span> <span class="keyword">await</span> lock:</div><div class="line">        print(<span class="string">'coro1 acquired lock'</span>)</div><div class="line">    print(<span class="string">'coro1 released lock'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">coro2</span><span class="params">(lock)</span>:</span></div><div class="line">    print(<span class="string">'coro2 waiting for the lock'</span>)</div><div class="line">    <span class="keyword">await</span> lock</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        print(<span class="string">'coro2 acquired lock'</span>)</div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        print(<span class="string">'coro2 released lock'</span>)</div><div class="line">        lock.release()</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(loop)</span>:</span></div><div class="line">    <span class="comment"># Create and acquire a shared lock.</span></div><div class="line"></div><div class="line">    lock = asyncio.Lock()</div><div class="line">    print(<span class="string">'acquiring the lock before starting coroutines'</span>)</div><div class="line">    <span class="keyword">await</span> lock.acquire()</div><div class="line">    print(<span class="string">'lock acquired: &#123;&#125;'</span>.format(lock.locked()))</div><div class="line"></div><div class="line">    <span class="comment"># Schedule a callback to unlock the lock.</span></div><div class="line">    loop.call_later(<span class="number">0.1</span>, functools.partial(unlock, lock))</div><div class="line"></div><div class="line">    <span class="comment"># Run the coroutines that want to use the lock.</span></div><div class="line">    print(<span class="string">'waiting for coroutines'</span>)</div><div class="line">    <span class="keyword">await</span> asyncio.wait([coro1(lock), coro2(lock)]),</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    event_loop.run_until_complete(main(event_loop))</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
+<p>在这个例子中，lock可以直接调用，使用await获取锁，使用release()方法来释放锁在coro2()方法中。在coro1中，可以使用with await关键字作为同步上下文管理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_lock.py</div><div class="line"></div><div class="line">acquiring the lock before starting coroutines</div><div class="line">lock acquired: True</div><div class="line">waiting for coroutines</div><div class="line">coro1 waiting for the lock</div><div class="line">coro2 waiting for the lock</div><div class="line">callback releasing lock</div><div class="line">coro1 acquired lock</div><div class="line">coro1 released lock</div><div class="line">coro2 acquired lock</div><div class="line">coro2 released lock</div></pre></td></tr></table></figure>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><p>asyncio.Event基于threading.Event, 经常被用来允许多个消费者等待相关联的通知发生，而不需要特定的值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># asyncio_event.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"><span class="keyword">import</span> functools</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_event</span><span class="params">(event)</span>:</span></div><div class="line">    print(<span class="string">'setting event in callback'</span>)</div><div class="line">    event.set()</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">coro1</span><span class="params">(event)</span>:</span></div><div class="line">    print(<span class="string">'coro1 waiting for event'</span>)</div><div class="line">    <span class="keyword">await</span> event.wait()</div><div class="line">    print(<span class="string">'coro1 triggered'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">coro2</span><span class="params">(event)</span>:</span></div><div class="line">    print(<span class="string">'coro2 waiting for event'</span>)</div><div class="line">    <span class="keyword">await</span> event.wait()</div><div class="line">    print(<span class="string">'coro2 triggered'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(loop)</span>:</span></div><div class="line">    <span class="comment"># Create a shared event</span></div><div class="line">    event = sayncio.Event()</div><div class="line">    print(<span class="string">'event start state: &#123;&#125;'</span>.format(event.is_set()))</div><div class="line">    </div><div class="line">    loop.call_later(</div><div class="line">        <span class="number">0.1</span>, functools.partial(set_event, event)</div><div class="line">    )</div><div class="line">    <span class="keyword">await</span> asyncio.wait([coro1(event), coro2(event)])</div><div class="line">    print(<span class="string">'event end state: &#123;&#125;'</span>.format(event.is_set()))</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    event_loop.run_until_complete(main(event_loop))</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
+<p>就像锁一样，coro1()和coro2()都等待事件的发生。不同的是只要事件状态变化就都开始执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_event.py</div><div class="line"></div><div class="line">event start state: False</div><div class="line">coro2 waiting for event</div><div class="line">coro1 waiting for event</div><div class="line">setting event in callback</div><div class="line">coro2 triggered</div><div class="line">coro1 triggered</div><div class="line">event end state: True</div></pre></td></tr></table></figure>
+<h2 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h2><p>Condition工作方式和Event相似，但是不是通知所有的等待的协程，而是根据传给notify()的参数只是唤醒一部分等待者。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># asyncio_condition.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">(condition, n)</span>:</span></div><div class="line">    <span class="keyword">with</span> <span class="keyword">await</span> condition:</div><div class="line">        print(<span class="string">'consumer &#123;&#125; if waiting'</span>.format(n))</div><div class="line">        <span class="keyword">await</span> condition.wait()</div><div class="line">        print(<span class="string">'consumer &#123;&#125; triggered'</span>.format(n))</div><div class="line">    print(<span class="string">'ending consumer &#123;&#125;'</span>.format(n))</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">manipulate_condition</span><span class="params">(condition)</span>:</span></div><div class="line">    print(<span class="string">'starting manipulate_condition'</span>)</div><div class="line"></div><div class="line">    <span class="comment"># pause to let consumers start</span></div><div class="line">    <span class="keyword">await</span> asyncio.sleep(<span class="number">0.1</span>)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>):</div><div class="line">        <span class="keyword">with</span> <span class="keyword">await</span> condition:</div><div class="line">            print(<span class="string">'notifying &#123;&#125; consumers'</span>.format(i))</div><div class="line">            condition.notify(n=i)</div><div class="line">        <span class="keyword">await</span> asyncio.sleep(<span class="number">0.1</span>)</div><div class="line"></div><div class="line">    <span class="keyword">with</span> <span class="keyword">await</span> condition:</div><div class="line">        print(<span class="string">'notifying remaining consumers'</span>)</div><div class="line">        condition.notify_all()</div><div class="line"></div><div class="line">    print(<span class="string">'ending maipulate_condition'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(loop)</span>:</span></div><div class="line">    <span class="comment"># Create a condition</span></div><div class="line">    condition = asyncio.Condition()</div><div class="line"></div><div class="line">    <span class="comment"># Set up tasks watching the condition</span></div><div class="line">    consumers = [</div><div class="line">        consumer(condition, i)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>)</div><div class="line">    ]</div><div class="line"></div><div class="line">    <span class="comment"># Schedule a task to manipulate the condition variable</span></div><div class="line">    loop.create_task(manipulate_condition(condition))</div><div class="line"></div><div class="line">    <span class="comment"># Wait for the consumers to be done</span></div><div class="line">    <span class="keyword">await</span> asyncio.wait(consumers)</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    result = event_loop.run_until_complete(main(event_loop))</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
+<p>这个例子中启动了5个Condition的消费者。每一个都使用wait()方法等待通知以便继续进行。manipulate_condition()方法中通知一个消费者，然后两个，最后是所有剩下的消费者。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_condition.py</div><div class="line"></div><div class="line">starting manipulate_condition</div><div class="line">consumer 3 is waiting</div><div class="line">consumer 1 is waiting</div><div class="line">consumer 2 is waiting</div><div class="line">consumer 0 is waiting</div><div class="line">consumer 4 is waiting</div><div class="line">notifying 1 consumers</div><div class="line">consumer 3 triggered</div><div class="line">ending consumer 3</div><div class="line">notifying 2 consumers</div><div class="line">consumer 1 triggered</div><div class="line">ending consumer 1</div><div class="line">consumer 2 triggered</div><div class="line">ending consumer 2</div><div class="line">notifying remaining consumers</div><div class="line">ending manipulate_condition</div><div class="line">consumer 0 triggered</div><div class="line">ending consumer 0</div><div class="line">consumer 4 triggered</div><div class="line">ending consumer 4</div></pre></td></tr></table></figure>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>asyncio.Queue提供了先进先出的协程数据结构，就像线程中的queue.Queue和进程中的multiprocessing.Queue。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># asyncio_queue.py</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> asyncio</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">consumer</span><span class="params">(n, q)</span>:</span></div><div class="line">    print(<span class="string">'consumer &#123;&#125;: starting'</span>.format(n))</div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        print(<span class="string">'consumer &#123;&#125;: waiting for item'</span>.format(n))</div><div class="line">        item = <span class="keyword">await</span> q.get()</div><div class="line">        print(<span class="string">'consumer &#123;&#125;: has item &#123;&#125;'</span>.format(n, item))</div><div class="line">        <span class="keyword">if</span> item <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">            <span class="comment"># None is the signal to stop</span></div><div class="line">            q.task_done()</div><div class="line">            <span class="keyword">break</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">await</span> asyncio.sleep(<span class="number">0.01</span> * item)</div><div class="line">            q.task_done()</div><div class="line">    print(<span class="string">'consumer &#123;&#125;: ending'</span>.format(n))</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">producer</span><span class="params">(q, num_workers)</span>:</span></div><div class="line">    print(<span class="string">'producer: starting'</span>)</div><div class="line">    <span class="comment"># Add some numbers to the queue to simulate jobs</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_workers * <span class="number">3</span>):</div><div class="line">        <span class="keyword">await</span> q.put(i)</div><div class="line">        print(<span class="string">'producter: added task &#123;&#125; to the queue'</span>.format(i))</div><div class="line">    <span class="comment"># Add None entries in the queue</span></div><div class="line">    <span class="comment"># to signal the consumers to exit</span></div><div class="line">    print(<span class="string">'producer: add stop signals to the queue'</span>)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_workers):</div><div class="line">        <span class="keyword">await</span> q.put(<span class="keyword">None</span>)</div><div class="line">    print(<span class="string">'producer: waiting for queue to empty'</span>)</div><div class="line">    <span class="keyword">await</span> q.join()</div><div class="line">    print(<span class="string">'producer: ending'</span>)</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(loop, num_consumers)</span>:</span></div><div class="line">    <span class="comment"># Create the queue with a fixed size so the producer</span></div><div class="line">    <span class="comment"># will block until the consumers pull some items out.</span></div><div class="line">    q = asyncio.Queue(maxsize=num_consumers)</div><div class="line"></div><div class="line">    <span class="comment"># Scheduled the consumer tasks</span></div><div class="line">    consumers = [</div><div class="line">        loop.create_task(consumer(i, q))</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(num_consumers)</div><div class="line">    ]</div><div class="line"></div><div class="line">    <span class="comment"># Schedule the producer task.</span></div><div class="line">    prod = loop.create_task(producer(q, num_consumers))</div><div class="line"></div><div class="line">    <span class="comment"># Wait for all of the coroutines to finish</span></div><div class="line">    <span class="keyword">await</span> asyncio.wait(consumers + [prod])</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line"><span class="keyword">try</span>:</div><div class="line">    event_loop.run_until_complete(main(event_loop, <span class="number">2</span>))</div><div class="line"><span class="keyword">finally</span>:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
+<p>使用put()添加对象或者使用get()移除对象都是异步操作，直到队列数量固定（阻塞除外）或者队列为空（阻塞调用获取对象）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_queue.py</div><div class="line"></div><div class="line">consumer 0: starting</div><div class="line">consumer 0: waiting for item</div><div class="line">consumer 1: starting</div><div class="line">consumer 1: waiting for item</div><div class="line">producer: starting</div><div class="line">producer: added task 0 to the queue</div><div class="line">producer: added task 1 to the queue</div><div class="line">consumer 0: has item 0</div><div class="line">consumer 1: has item 1</div><div class="line">producer: added task 2 to the queue</div><div class="line">producer: added task 3 to the queue</div><div class="line">consumer 0: waiting for item</div><div class="line">consumer 0: has item 2</div><div class="line">producer: added task 4 to the queue</div><div class="line">consumer 1: waiting for item</div><div class="line">consumer 1: has item 3</div><div class="line">producer: added task 5 to the queue</div><div class="line">producer: adding stop signals to the queue</div><div class="line">consumer 0: waiting for item</div><div class="line">consumer 0: has item 4</div><div class="line">consumer 1: waiting for item</div><div class="line">consumer 1: has item 5</div><div class="line">producer: waiting for queue to empty</div><div class="line">consumer 0: waiting for item</div><div class="line">consumer 0: has item None</div><div class="line">consumer 0: ending</div><div class="line">consumer 1: waiting for item</div><div class="line">consumer 1: has item None</div><div class="line">consumer 1: ending</div><div class="line">producer: ending</div></pre></td></tr></table></figure>
+<p><a href="https://pymotw.com/3/asyncio/synchronization.html" target="_blank" rel="external">原文链接</a></p>
+
+  </article>
+</div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '09000ea053fee357b238',
+        clientSecret: 'a9b39ea3928ad9e2e30f40bc70d82fc40f5c8207',
+        repo: 'songcser.github.io',
+        owner: 'songcser',
+        admin: ['songcser'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <a href="https://www.songcser.com" class="footer-logo">
+      <!-- <i class="fa fa-github"></i> -->
+      鲁ICP备17046128
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2017 songcser</li>
+      <li><a href="https://www.songcser.com">Home</a></li>
+      
+      <li><a href="https://github.com/songcser">Github</a></li>
+      
+      <li><a href="http://weibo.com/1751043871">Weibo</a></li>
+      
+      <li><a href="http://www.linkedin.com/in/herry-song-4954b85a/">Linkedin</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      <!-- Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a> -->
+      <!-- by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo -->
+        Hosted by <a href="https://pages.coding.me">Coding Pages</a>
+    </div>
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>
