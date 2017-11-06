@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.songcser.com/2017/11/06/receiving-unix-signals/</loc>
+    
+    <lastmod>2017-11-06T01:44:52.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.songcser.com/2017/10/26/working-with-subprocesses/</loc>
     
     <lastmod>2017-11-05T08:08:31.000Z</lastmod>
