@@ -180,7 +180,9 @@
         <li class="archive-list-item">
           <h2><a href="/2017/11/06/receiving-unix-signals/">接收Unix信号</a></h2>
           <p>
-            ...
+             通常Unix系统事件通知需要中断应用来触发执行。当使用sayncio时，信号处理回调会与事件循环管理的其他协程的回调交错进行。这导致中断的功能更少，因此需要提供安全防护来清理不完整的操作。 
+ 信号处理必须是常规的调用，不是协程。 
+      1  2  3  4  5  6  7  8  9 ...
           </p>
           <ul class="tag-list clearfix">
             
