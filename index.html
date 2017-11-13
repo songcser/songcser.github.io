@@ -164,7 +164,7 @@
     <li class="selected">
       <a href="/">Overview</a></li>
     <li class="">
-      <a href="/archives">Posts <span class="counter">15</span></a>
+      <a href="/archives">Posts <span class="counter">16</span></a>
     </li>
     <li class="">
       <a href="/categories">Categories <span
@@ -177,6 +177,22 @@
     <div class="body-secondary">
       <p class="right-title">Recent post</p>
       <ul class="recent-post clearfix">
+        
+        <li class="recent-post-item">
+          <div class="clearfix">
+            <h5 class="post-title text-ellipsis">
+              <i class="fa fa-bars"></i>
+              <a href="/2017/11/13/combining-coroutines-with-threads-and-processes/">协程和线程进程组合</a>
+            </h5>
+            <p class="post-description text-ellipsis desktop-only">
+              
+            </p>
+            <p class="post-info desktop-only">
+              <span><i class="fa fa-folder-open"></i> Uncategorized</span>
+              <span><i class="fa fa-tag"></i> 0 </span>
+            </p>
+          </div>
+        </li>
         
         <li class="recent-post-item">
           <div class="clearfix">
@@ -250,22 +266,6 @@
             </h5>
             <p class="post-description text-ellipsis desktop-only">
                这节练习两个例程实现简单的服务端和客户端的替换版本。使用协程和asyncio流API代替proto
-            </p>
-            <p class="post-info desktop-only">
-              <span><i class="fa fa-folder-open"></i> Uncategorized</span>
-              <span><i class="fa fa-tag"></i> 0 </span>
-            </p>
-          </div>
-        </li>
-        
-        <li class="recent-post-item">
-          <div class="clearfix">
-            <h5 class="post-title text-ellipsis">
-              <i class="fa fa-bars"></i>
-              <a href="/2017/10/13/asynchronous-IO-with-protocol-class-abstractions/">抽象类Protocol异步IO</a>
-            </h5>
-            <p class="post-description text-ellipsis desktop-only">
-               到目前为止，那些例子都避免混合并发和IO操作，以便每次都关注一个概念。当IO阻塞时进行上下文切换是
             </p>
             <p class="post-info desktop-only">
               <span><i class="fa fa-folder-open"></i> Uncategorized</span>
@@ -361,7 +361,7 @@
 
 
 <script>
-  var posts = [{"date":"2017-09-04","title":"Hello World","url":"https://www.songcser.com/2017/09/04/hello-world/"},{"date":"2017-09-20","title":"Sanic Micro Service","url":"https://www.songcser.com/2017/09/20/sanic-microservice/"},{"date":"2017-09-24","title":"异步协程概念","url":"https://www.songcser.com/2017/09/24/asynchronous-concurrency-concepts/"},{"date":"2017-09-25","title":"协程的多任务处理","url":"https://www.songcser.com/2017/09/25/cooperative-multitasking-with-coroutines/"},{"date":"2017-09-26","title":"异步生成结果","url":"https://www.songcser.com/2017/09/26/producing-results-asynchronously/"},{"date":"2017-09-26","title":"Task并发","url":"https://www.songcser.com/2017/09/26/executing-tasks-concurrently/"},{"date":"2017-09-26","title":"常规函数调用","url":"https://www.songcser.com/2017/09/26/scheduling-calls-to-regular-functions/"},{"date":"2017-10-10","title":"组合协程控制结构","url":"https://www.songcser.com/2017/10/10/composing-coroutines-with-control-structures/"},{"date":"2017-10-11","title":"同步原语","url":"https://www.songcser.com/2017/10/11/synchronization-primitives/"},{"date":"2017-10-13","title":"抽象类Protocol异步IO","url":"https://www.songcser.com/2017/10/13/asynchronous-IO-with-protocol-class-abstractions/"},{"date":"2017-10-20","title":"协程异步IO流","url":"https://www.songcser.com/2017/10/20/asynchronous-IO-using-coroutines-and-streams/"},{"date":"2017-10-23","title":"使用SSL","url":"https://www.songcser.com/2017/10/23/using-ssl/"},{"date":"2017-10-25","title":"域名服务交互","url":"https://www.songcser.com/2017/10/25/interacting-with-domain-name-services/"},{"date":"2017-10-26","title":"子进程交互","url":"https://www.songcser.com/2017/10/26/working-with-subprocesses/"},{"date":"2017-11-06","title":"接收Unix信号","url":"https://www.songcser.com/2017/11/06/receiving-unix-signals/"}];
+  var posts = [{"date":"2017-09-04","title":"Hello World","url":"https://www.songcser.com/2017/09/04/hello-world/"},{"date":"2017-09-20","title":"Sanic Micro Service","url":"https://www.songcser.com/2017/09/20/sanic-microservice/"},{"date":"2017-09-24","title":"异步协程概念","url":"https://www.songcser.com/2017/09/24/asynchronous-concurrency-concepts/"},{"date":"2017-09-25","title":"协程的多任务处理","url":"https://www.songcser.com/2017/09/25/cooperative-multitasking-with-coroutines/"},{"date":"2017-09-26","title":"常规函数调用","url":"https://www.songcser.com/2017/09/26/scheduling-calls-to-regular-functions/"},{"date":"2017-09-26","title":"Task并发","url":"https://www.songcser.com/2017/09/26/executing-tasks-concurrently/"},{"date":"2017-09-26","title":"异步生成结果","url":"https://www.songcser.com/2017/09/26/producing-results-asynchronously/"},{"date":"2017-10-10","title":"组合协程控制结构","url":"https://www.songcser.com/2017/10/10/composing-coroutines-with-control-structures/"},{"date":"2017-10-11","title":"同步原语","url":"https://www.songcser.com/2017/10/11/synchronization-primitives/"},{"date":"2017-10-13","title":"抽象类Protocol异步IO","url":"https://www.songcser.com/2017/10/13/asynchronous-IO-with-protocol-class-abstractions/"},{"date":"2017-10-20","title":"协程异步IO流","url":"https://www.songcser.com/2017/10/20/asynchronous-IO-using-coroutines-and-streams/"},{"date":"2017-10-23","title":"使用SSL","url":"https://www.songcser.com/2017/10/23/using-ssl/"},{"date":"2017-10-25","title":"域名服务交互","url":"https://www.songcser.com/2017/10/25/interacting-with-domain-name-services/"},{"date":"2017-10-26","title":"子进程交互","url":"https://www.songcser.com/2017/10/26/working-with-subprocesses/"},{"date":"2017-11-06","title":"接收Unix信号","url":"https://www.songcser.com/2017/11/06/receiving-unix-signals/"},{"date":"2017-11-13","title":"协程和线程进程组合","url":"https://www.songcser.com/2017/11/13/combining-coroutines-with-threads-and-processes/"}];
   var today = moment().format('YYYY-MM-DD');
   var oneYearAgo = moment(today).subtract(1, 'years');
   posts = posts.filter(function(post) {

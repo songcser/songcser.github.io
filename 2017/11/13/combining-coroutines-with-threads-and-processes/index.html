@@ -8,9 +8,13 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
-    Herry&#39;s blog
+    协程和线程进程组合 | Herry&#39;s blog
   </title>
   <meta name="description" content="">
+  
+  <meta name="keywords" content="
+  
+  ">
   
   <meta name="author" content="songcser">
 
@@ -90,115 +94,84 @@
 </nav>
 
 <div class="main-container">
-  
-
-<div class="container-lg">
-  
-
-<div class="blog-intro">
-  <div class="blog-intro-user">
-    <img class="avatar" src="https://dn-coding-net-production-static.qbox.me/d369021c-643f-480e-ae0a-0f97460665d6.jpg?imageMogr2/auto-orient/format/jpeg/crop/!215x215a39a0/thumbnail/460">
-    <div class="user-name">
-      <div class="blog-title">Herry&#39;s blog</div>
-      <div class="blog-author">songcser</div>
-        <ul class="user-detail mobile-only">
-    
-    <li>
-      <i class="fa fa-map-marker"></i>
-      Shang Hai
-    </li>
-    
-    <li>
-      <i class="fa fa-envelope-o"></i>
-      <a href="mailto:songjiyi2008@163.com">songjiyi2008@163.com</a>
-    </li>
-    
-    <li>
-      <i class="fa fa-link"></i>
-      <a href="https://www.songcser.com">https://www.songcser.com</a>
-    </li>
-  </ul>
-    </div>
-    <div class="blog-description">
-      
-    </div>
-  </div>
-
-  <ul class="user-detail desktop-only">
-    
-    <li>
-      <i class="fa fa-map-marker"></i>
-      Shang Hai
-    </li>
-    
-    <li>
-      <i class="fa fa-envelope-o"></i>
-      <a href="mailto:songjiyi2008@163.com">songjiyi2008@163.com</a>
-    </li>
-    
-    <li>
-      <i class="fa fa-link"></i>
-      <a href="https://www.songcser.com">https://www.songcser.com</a>
-    </li>
-  </ul>
-
-  <div class="social-media desktop-only">
-    <h4>Social Media</h4>
-    <ul>
-      
-      <li class="social-media-item"><a href="https://github.com/songcser" target="_blank"><i class="fa fa-github"></i></a></li>
-      
-      <li class="social-media-item"><a href="http://weibo.com/1751043871" target="_blank"><i class="fa fa-weibo"></i></a></li>
-      
-      <li class="social-media-item"><a href="http://www.linkedin.com/in/herry-song-4954b85a/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-      
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 16 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 1 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 0 </a>
+      </li>
     </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Herry&#39;s blog</a>
+      
+      
+    </h2>
   </div>
-</div>
 
-
-  <div class="blog-detail">
-    
-<nav class="blog-detail-nav desktop-only">
-  <ul class="clearfix">
-    <li class="">
-      <a href="/">Overview</a></li>
-    <li class="">
-      <a href="/archives">Posts <span class="counter">16</span></a>
-    </li>
-    <li class="">
-      <a href="/categories">Categories <span
-                class="counter">0</span></a></li>
-    <li class="selected">
-      <a href="/tags">Tags <span class="counter">1</span></a></li>
-  </ul>
-</nav>
-
-    <div class="body-secondary">
-      <ul class="archive-list">
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/09/25/cooperative-multitasking-with-coroutines/">协程的多任务处理</a></h2>
-          <p>
-             协程是一种用于并发操作的语言结构。协程函数在被调用时创建协程对象，调用者可以使用协程的send()的方法来运行代码。协程通过await可以停止其他协程的执行。停止后，协程的状态是meaintained,在下次被唤醒时从这个地方继续运行。 
-   开始一个协程  有几种不同的方法使用asyncio事...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio 异步 协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 1 </span>
-            <span>Published {{moment(1506336744000).fromNow()}}</span>
-          </div>
-        </li>
-        
-      </ul>
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
     </div>
   </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    songcser
+
+    <span class="post-date float-right" title="{{moment(1510558321000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1510558321000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>协程和线程进程组合</h1>
+    
+  </article>
 </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div class='container' id="gitalk-container"></div>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '09000ea053fee357b238',
+        clientSecret: 'a9b39ea3928ad9e2e30f40bc70d82fc40f5c8207',
+        repo: 'songcser.github.io',
+        owner: 'songcser',
+        admin: ['songcser'],
+        distractionFreeMode: true,
+    })
+    gitalk.render('gitalk-container')
+</script>
+
+
+
+
 </div>
 
 <div class="footer-wrapper container">
