@@ -164,7 +164,7 @@
     <li class="">
       <a href="/">Overview</a></li>
     <li class="selected">
-      <a href="/archives">Posts <span class="counter">16</span></a>
+      <a href="/archives">Posts <span class="counter">17</span></a>
     </li>
     <li class="">
       <a href="/categories">Categories <span
@@ -176,6 +176,22 @@
 
     <div class="body-secondary">
       <ul class="archive-list">
+        
+        <li class="archive-list-item">
+          <h2><a href="/2017/09/26/executing-tasks-concurrently/">Task并发</a></h2>
+          <p>
+             Task是与事件循环交互的主要方式之一。 Task包装协程并跟踪它的完成。 Tasks是Future的子类，所以其他协程等待他们并且每一个都会获得task完成时返回的结果。 
+   启动Task  使用create_task()创建Task实例启动任务。task将做为事件循环并发操作的一部分运行，...
+          </p>
+          <ul class="tag-list clearfix">
+            
+          </ul>
+          <div class="post-info">
+            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
+            <span><i class="fa fa-tag"></i> 0 </span>
+            <span>Published {{moment(1506464620000).fromNow()}}</span>
+          </div>
+        </li>
         
         <li class="archive-list-item">
           <h2><a href="/2017/09/26/producing-results-asynchronously/">异步生成结果</a></h2>
