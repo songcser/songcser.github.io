@@ -226,10 +226,10 @@
         </li>
         
         <li class="archive-list-item">
-          <h2><a href="/2017/09/25/cooperative-multitasking-with-coroutines/">协程的多任务处理</a></h2>
+          <h2><a href="/2017/09/25/cooperative-multitasking-with-coroutines/">asyncio之协程的多任务处理</a></h2>
           <p>
-             协程是一种用于并发操作的语言结构。协程函数在被调用时创建协程对象，调用者可以使用协程的send()的方法来运行代码。协程通过await可以停止其他协程的执行。停止后，协程的状态是meaintained,在下次被唤醒时从这个地方继续运行。 
-   开始一个协程  有几种不同的方法使用asyncio事...
+             协程是一种用于并发操作的语言结构。协程函数在被调用时创建协程对象，调用者可以使用协程的send()的方法来运行代码。协程通过await可以停止其他协程的执行。停止后的协程的状态是meaintained,在下次被唤醒时从这个地方继续运行。 
+   开始一个协程  有几种不同的方法可以使用asynci...
           </p>
           <ul class="tag-list clearfix">
             
@@ -244,10 +244,10 @@
         </li>
         
         <li class="archive-list-item">
-          <h2><a href="/2017/09/24/asynchronous-concurrency-concepts/">异步协程概念</a></h2>
+          <h2><a href="/2017/09/24/asynchronous-concurrency-concepts/">asyncio之异步协程概念</a></h2>
           <p>
-             其他的大多数并发模型是线性写入的，并且依赖于语言运行时或操作系统的底层线程或进程管理来适当的改变程序运行时的上下文。而基于asyncio的应用程序是由应用代码去处理上下文的切换,并且使用正确的技术取决于了解几个相互关联的概念。 
- asyncio框架是以事件循环为中心，负责高效处理IO事件，系统事...
+             现在大多数并发模型是线性写入的，并且依赖于语言运行时或操作系统的底层线程或进程进行管理,来适当的改变程序运行时的上下文。而基于asyncio的应用程序是由应用代码处理上下文的切换，使用正确的技术取决于几个相关的概念。 
+ asyncio框架是以事件循环为中心，是负责高效处理IO事件，系统事件和应用...
           </p>
           <ul class="tag-list clearfix">
             

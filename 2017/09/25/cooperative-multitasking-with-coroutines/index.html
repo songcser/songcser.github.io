@@ -8,7 +8,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
-    协程的多任务处理 | Herry&#39;s blog
+    asyncio之协程的多任务处理 | Herry&#39;s blog
   </title>
   <meta name="description" content="">
   
@@ -148,9 +148,9 @@
   </h3>
 
   <article class="post-content">
-    <h1>协程的多任务处理</h1>
-    <p>协程是一种用于并发操作的语言结构。协程函数在被调用时创建协程对象，调用者可以使用协程的send()的方法来运行代码。协程通过await可以停止其他协程的执行。停止后，协程的状态是meaintained,在下次被唤醒时从这个地方继续运行。</p>
-<h2 id="开始一个协程"><a href="#开始一个协程" class="headerlink" title="开始一个协程"></a>开始一个协程</h2><p>有几种不同的方法使用asyncio事件循环启动协程。最简单的方式是使用run_until_complete()方法，直接执行协程。</p>
+    <h1>asyncio之协程的多任务处理</h1>
+    <p>协程是一种用于并发操作的语言结构。协程函数在被调用时创建协程对象，调用者可以使用协程的send()的方法来运行代码。协程通过await可以停止其他协程的执行。停止后的协程的状态是meaintained,在下次被唤醒时从这个地方继续运行。</p>
+<h2 id="开始一个协程"><a href="#开始一个协程" class="headerlink" title="开始一个协程"></a>开始一个协程</h2><p>有几种不同的方法可以使用asyncio事件循环启动协程。最简单的方式是使用run_until_complete()方法，直接运行协程。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"># asyncio_coroutine.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line"></div><div class="line">async def coroutine():</div><div class="line">    print(&apos;in coroutine&apos;)</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    print(&apos;starting coroutine&apos;)</div><div class="line">    coro = coroutine()</div><div class="line">    print(&apos;entering event loop&apos;)</div><div class="line">    event_loop.run_untile_complete(coro)</div><div class="line">finally:</div><div class="line">    print(&apos;closing event loop&apos;)</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
 <p>首先获取事件循环的引用，使用默认的loop或者指定特定的loop类。在这个例子中，使用类默认的loop。run_untile_complete()方法使用协程对象启动loop，当协程退出返回时停止loop。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># python3 asyncio_coroutine.py</div><div class="line"></div><div class="line">starting coroutine</div><div class="line">entering event loop</div><div class="line">in coroutine</div><div class="line">closing event loop</div></pre></td></tr></table></figure>

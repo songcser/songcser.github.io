@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.songcser.com/2017/09/25/cooperative-multitasking-with-coroutines/</loc>
+    
+    <lastmod>2017-12-06T07:41:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.songcser.com/2017/09/24/asynchronous-concurrency-concepts/</loc>
+    
+    <lastmod>2017-12-06T07:38:01.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.songcser.com/2017/11/21/debugging-with-asyncio/</loc>
     
     <lastmod>2017-11-29T10:25:37.000Z</lastmod>
@@ -89,20 +103,6 @@
     <loc>https://www.songcser.com/2017/09/26/scheduling-calls-to-regular-functions/</loc>
     
     <lastmod>2017-09-27T13:33:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.songcser.com/2017/09/25/cooperative-multitasking-with-coroutines/</loc>
-    
-    <lastmod>2017-09-26T10:59:38.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.songcser.com/2017/09/24/asynchronous-concurrency-concepts/</loc>
-    
-    <lastmod>2017-09-25T10:50:29.000Z</lastmod>
     
   </url>
   
