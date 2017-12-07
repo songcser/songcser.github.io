@@ -163,10 +163,10 @@
   <ul class="clearfix">
     <li class="">
       <a href="/">Overview</a></li>
-    <li class="selected">
+    <li class="">
       <a href="/archives">Posts <span class="counter">17</span></a>
     </li>
-    <li class="">
+    <li class="selected">
       <a href="/categories">Categories <span
                 class="counter">1</span></a></li>
     <li class="">
@@ -176,38 +176,6 @@
 
     <div class="body-secondary">
       <ul class="archive-list">
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/09/26/executing-tasks-concurrently/">Task并发</a></h2>
-          <p>
-             Task是与事件循环交互的主要方式之一。 Task包装协程并跟踪它的完成。 Tasks是Future的子类，所以其他协程等待他们并且每一个都会获得task完成时返回的结果。 
-   启动Task  使用create_task()创建Task实例启动任务。task将做为事件循环并发操作的一部分运行，...
-          </p>
-          <ul class="tag-list clearfix">
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
-            <span>Published {{moment(1506464620000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/09/26/producing-results-asynchronously/">异步生成结果</a></h2>
-          <p>
-             Future代表任务的结果还没有生成。事件循环能够监控Future对象的状态来标示完成，运行应用的一部分等待另一部分完成任务。 
-   编写Future  Future的行为和协程一样，因此一些有用的等待协程的方法也可以用来等待Future的完成。这个例子将future传递给事件循环的run_un...
-          </p>
-          <ul class="tag-list clearfix">
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
-            <span>Published {{moment(1506448869000).fromNow()}}</span>
-          </div>
-        </li>
         
         <li class="archive-list-item">
           <h2><a href="/2017/09/26/scheduling-calls-to-regular-functions/">asyncio之常规函数调用</a></h2>
@@ -228,74 +196,6 @@
             <span><i class="fa fa-folder-open"></i> asyncio </span>
             <span><i class="fa fa-tag"></i> 3 </span>
             <span>Published {{moment(1506422903000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/09/25/cooperative-multitasking-with-coroutines/">asyncio之协程的多任务处理</a></h2>
-          <p>
-             协程是一种用于并发操作的语言结构。协程函数在被调用时创建协程对象，调用者可以使用协程的send()的方法来运行代码。协程通过await可以停止其他协程的执行。停止后的协程的状态是meaintained,在下次被唤醒时从这个地方继续运行。 
-   开始一个协程  有几种不同的方法可以使用asynci...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio 异步 协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 1 </span>
-            <span>Published {{moment(1506336744000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/09/24/asynchronous-concurrency-concepts/">asyncio之异步协程概念</a></h2>
-          <p>
-             现在大多数并发模型是线性写入的，并且依赖于语言运行时或操作系统的底层线程或进程进行管理,来适当的改变程序运行时的上下文。而基于asyncio的应用程序是由应用代码处理上下文的切换，使用正确的技术取决于几个相关的概念。 
- asyncio框架是以事件循环为中心，是负责高效处理IO事件，系统事件和应用...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio 异步 协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 1 </span>
-            <span>Published {{moment(1506246130000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/09/20/sanic-microservice/">Sanic Micro Service</a></h2>
-          <p>
-             基于sanic的微服务基础架构 
-   介绍  使用python做web开发面临的一个最大的问题就是性能，在解决C10K问题上显的有点吃力。有些异步框架Tornado、Twisted、Gevent 等就是为了解决性能问题。这些框架在性能上有些提升，但是也出现了各种古怪的问题难以解决。 
- 在pyt...
-          </p>
-          <ul class="tag-list clearfix">
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
-            <span>Published {{moment(1505870750000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/09/04/hello-world/">Hello World</a></h2>
-          <p>
-             Welcome to  Hexo ! This is your very first post. Check  documentation  for more info. If you get any problems when using Hexo, you can find the answe...
-          </p>
-          <ul class="tag-list clearfix">
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
-            <span>Published {{moment(1504490221000).fromNow()}}</span>
           </div>
         </li>
         

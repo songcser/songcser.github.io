@@ -168,9 +168,9 @@
     </li>
     <li class="">
       <a href="/categories">Categories <span
-                class="counter">0</span></a></li>
+                class="counter">1</span></a></li>
     <li class="">
-      <a href="/tags">Tags <span class="counter">1</span></a></li>
+      <a href="/tags">Tags <span class="counter">4</span></a></li>
   </ul>
 </nav>
 
@@ -372,17 +372,23 @@
         </li>
         
         <li class="archive-list-item">
-          <h2><a href="/2017/09/26/scheduling-calls-to-regular-functions/">常规函数调用</a></h2>
+          <h2><a href="/2017/09/26/scheduling-calls-to-regular-functions/">asyncio之常规函数调用</a></h2>
           <p>
              除了管理协程和IO回调，asyncio事件循环可以根据loop中保留的定时器来调度常规函数。 
-   调度回调函数”Soon”  如果回调的定时器不重要，call_soon()方法在loop的下次迭代中进行调度。方法被调用时可以将一些额外的位置参数传递给回调。可以使用functools模块的par...
+   调度回调函数”Soon”  如果回调的时间无关紧要，可以使用call_soon()方法在loop的下次迭代中进行调度。方法被调用时可以将一些额外的位置参数传递给回调。可以使用functools模块...
           </p>
           <ul class="tag-list clearfix">
             
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
+            
           </ul>
           <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
             <span>Published {{moment(1506422903000).fromNow()}}</span>
           </div>
         </li>
@@ -413,10 +419,12 @@
           </p>
           <ul class="tag-list clearfix">
             
+            <li class="tag-list-item">asyncio 异步 协程</li>
+            
           </ul>
           <div class="post-info">
             <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
+            <span><i class="fa fa-tag"></i> 1 </span>
             <span>Published {{moment(1506246130000).fromNow()}}</span>
           </div>
         </li>
