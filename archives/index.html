@@ -170,7 +170,7 @@
       <a href="/categories">Categories <span
                 class="counter">1</span></a></li>
     <li class="">
-      <a href="/tags">Tags <span class="counter">4</span></a></li>
+      <a href="/tags">Tags <span class="counter">3</span></a></li>
   </ul>
 </nav>
 
@@ -186,10 +186,16 @@
           </p>
           <ul class="tag-list clearfix">
             
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
+            
           </ul>
           <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
             <span>Published {{moment(1511228654000).fromNow()}}</span>
           </div>
         </li>
@@ -340,10 +346,10 @@
         </li>
         
         <li class="archive-list-item">
-          <h2><a href="/2017/09/26/executing-tasks-concurrently/">Task并发</a></h2>
+          <h2><a href="/2017/09/26/executing-tasks-concurrently/">asyncio之执行并发任务</a></h2>
           <p>
-             Task是与事件循环交互的主要方式之一。 Task包装协程并跟踪它的完成。 Tasks是Future的子类，所以其他协程等待他们并且每一个都会获得task完成时返回的结果。 
-   启动Task  使用create_task()创建Task实例启动任务。task将做为事件循环并发操作的一部分运行，...
+             Task是与事件循环交互的主要方式之一。 Task包装协程并跟踪它的完成。 Tasks是Future的子类，所以其他协程等待他们并且每一个协程都会获得task完成时返回的结果。 
+   启动Task  使用create_task()创建Task实例启动任务。只要loop正在运行，并且协程没有返回，...
           </p>
           <ul class="tag-list clearfix">
             
@@ -356,17 +362,23 @@
         </li>
         
         <li class="archive-list-item">
-          <h2><a href="/2017/09/26/producing-results-asynchronously/">异步生成结果</a></h2>
+          <h2><a href="/2017/09/26/producing-results-asynchronously/">asyncio之异步生成结果</a></h2>
           <p>
-             Future代表任务的结果还没有生成。事件循环能够监控Future对象的状态来标示完成，运行应用的一部分等待另一部分完成任务。 
-   编写Future  Future的行为和协程一样，因此一些有用的等待协程的方法也可以用来等待Future的完成。这个例子将future传递给事件循环的run_un...
+             Future代表任务的结果还没有生成。事件循环能够监控Future对象的状态来标示完成，并且允许应用的一部分等待另一部分完成任务。 
+   等待Future  Future的行为和协程一样，因此一些有用的等待协程的方法也可以用来等待Future的完成。这个例子将future传递给事件循环的run_...
           </p>
           <ul class="tag-list clearfix">
             
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
+            
           </ul>
           <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
             <span>Published {{moment(1506448869000).fromNow()}}</span>
           </div>
         </li>
@@ -401,12 +413,16 @@
           </p>
           <ul class="tag-list clearfix">
             
-            <li class="tag-list-item">asyncio 异步 协程</li>
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
             
           </ul>
           <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 1 </span>
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
             <span>Published {{moment(1506336744000).fromNow()}}</span>
           </div>
         </li>
@@ -419,12 +435,16 @@
           </p>
           <ul class="tag-list clearfix">
             
-            <li class="tag-list-item">asyncio 异步 协程</li>
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
             
           </ul>
           <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 1 </span>
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
             <span>Published {{moment(1506246130000).fromNow()}}</span>
           </div>
         </li>

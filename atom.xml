@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.songcser.com/"/>
-  <updated>2017-11-29T10:25:37.000Z</updated>
+  <updated>2017-12-07T07:07:34.000Z</updated>
   <id>https://www.songcser.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.songcser.com/2017/11/21/debugging-with-asyncio/"/>
     <id>https://www.songcser.com/2017/11/21/debugging-with-asyncio/</id>
     <published>2017-11-21T01:44:14.000Z</published>
-    <updated>2017-11-29T10:25:37.000Z</updated>
+    <updated>2017-12-07T07:07:34.000Z</updated>
     
     <content type="html"><![CDATA[<p>asyncio构建了一些有用的调试特性。</p>
 <p>首先，事件循环在运行时使用logging来发送状态信息。在应用中启用日志就会获取到一些信息。其他的可以打开告诉事件循环来发送更多的调试信息。通过调用set_debug()传递boolean值来表明是否启动调试。</p>
@@ -41,6 +41,14 @@
     
     </summary>
     
+      <category term="asyncio" scheme="https://www.songcser.com/categories/asyncio/"/>
+    
+    
+      <category term="asyncio" scheme="https://www.songcser.com/tags/asyncio/"/>
+    
+      <category term="异步" scheme="https://www.songcser.com/tags/%E5%BC%82%E6%AD%A5/"/>
+    
+      <category term="协程" scheme="https://www.songcser.com/tags/%E5%8D%8F%E7%A8%8B/"/>
     
   </entry>
   
@@ -433,36 +441,36 @@
   </entry>
   
   <entry>
-    <title>Task并发</title>
+    <title>asyncio之执行并发任务</title>
     <link href="https://www.songcser.com/2017/09/26/executing-tasks-concurrently/"/>
     <id>https://www.songcser.com/2017/09/26/executing-tasks-concurrently/</id>
     <published>2017-09-26T22:23:40.000Z</published>
-    <updated>2017-10-09T10:24:06.000Z</updated>
+    <updated>2017-12-08T09:02:18.000Z</updated>
     
-    <content type="html"><![CDATA[<p>Task是与事件循环交互的主要方式之一。 Task包装协程并跟踪它的完成。 Tasks是Future的子类，所以其他协程等待他们并且每一个都会获得task完成时返回的结果。</p>
-<h2 id="启动Task"><a href="#启动Task" class="headerlink" title="启动Task"></a>启动Task</h2><p>使用create_task()创建Task实例启动任务。task将做为事件循环并发操作的一部分运行，只要loop正在运行，并且协程  没有返回。</p>
+    <content type="html"><![CDATA[<p>Task是与事件循环交互的主要方式之一。 Task包装协程并跟踪它的完成。 Tasks是Future的子类，所以其他协程等待他们并且每一个协程都会获得task完成时返回的结果。</p>
+<h2 id="启动Task"><a href="#启动Task" class="headerlink" title="启动Task"></a>启动Task</h2><p>使用create_task()创建Task实例启动任务。只要loop正在运行，并且协程没有返回，task将做为事件循环并发操作的一部分一直运行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"># asyncio_create_task.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line"></div><div class="line">async def task_func():</div><div class="line">    print(&apos;in task_func&apos;)</div><div class="line">    return &apos;the result&apos;</div><div class="line"></div><div class="line">async def main(loop):</div><div class="line">    print(&apos;createing task&apos;)</div><div class="line">    task = loop.create_task(task_func())</div><div class="line">    print(&apos;waiting for &#123;!r&#125;&apos;.format(task))</div><div class="line">    return_value = await task</div><div class="line">    print(&apos;task completed &#123;!r&#125;&apos;.format(task))</div><div class="line">    print(&apos;return value: &#123;!r&#125;&apos;.format(return_value))</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    event_loop.run_until_complete(main(event_loop))</div><div class="line">finally:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
 <p>这个例子中main()函数退出之前需要等待task返回结果。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># python3 asyncio_create_task.py</div><div class="line"></div><div class="line">creating task</div><div class="line">waiting for &lt;Task pending coro=&lt;task_func() running at asyncio_create_task.py:12&gt;&gt;</div><div class="line">in task_func</div><div class="line">task completed &lt;Task finished coro=&lt;task_func() done, defined at asyncio_create_task.py:12&gt; result=&apos;the result&apos;&gt;</div><div class="line">return value: &apos;the result&apos;</div></pre></td></tr></table></figure>
-<h2 id="取消Task"><a href="#取消Task" class="headerlink" title="取消Task"></a>取消Task</h2><p>通过create_task()可以返回Task对象，就有可能取消task的操作在它完成之前。</p>
+<h2 id="取消Task"><a href="#取消Task" class="headerlink" title="取消Task"></a>取消Task</h2><p>通过create_task()可以返回Task对象，这样就可以在task完成之前取消操作。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># asyncio_cancel_task.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line"></div><div class="line">async def task_func():</div><div class="line">    print(&apos;in task_func&apos;)</div><div class="line">    return &apos;the result&apos;</div><div class="line"></div><div class="line">async def main(loop):</div><div class="line">    print(&apos;createing task&apos;)</div><div class="line">    task = loop.create_task(task_func())</div><div class="line"></div><div class="line">    print(&apos;canceling task&apos;)</div><div class="line">    task.cancel()</div><div class="line"></div><div class="line">    print(&apos;canceled task &#123;!r&#125;&apos;.format(task))</div><div class="line">    try:</div><div class="line">        await task</div><div class="line">    except asyncio.CancelledError:</div><div class="line">        print(&apos;caught error from canceled task&apos;)</div><div class="line">    else:</div><div class="line">        print(&apos;task result: &#123;!r&#125;&apos;.format(task.result()))</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    event_loop.run_until_complete(main(event_loop))</div><div class="line">finally:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
-<p>这个例子中在事件循环开始之前创建然后取消task。会从run_until_complete()函数中抛出CancelledError异常。</p>
+<p>这个例子中在事件循环开始之前创建task然后取消，会从run_until_complete()函数中抛出CancelledError异常。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># python3 asyncio_cancel_task.py</div><div class="line"></div><div class="line">creating task</div><div class="line">canceling task</div><div class="line">canceled task &lt;Task cancelling coro=&lt;task_func() running at asyncio_cancel_task.py:12&gt;&gt;</div><div class="line">caught error from canceled task</div></pre></td></tr></table></figure>
 <p>如果task在等待其他并发操作时被取消，它会在它等待的地方抛出CancelledError异常来通知task被取消。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"># asyncio_cancel_task2.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line"></div><div class="line">async def task_func():</div><div class="line">    print(&apos;in task_func, sleeping&apos;)</div><div class="line">    try:</div><div class="line">        await asyncio.sleep(1)</div><div class="line">    except asyncio.CancelledError:</div><div class="line">        print(&apos;task_func was canceled&apos;)</div><div class="line">        raise</div><div class="line">    return &apos;the result&apos;</div><div class="line"></div><div class="line">def task_canceller(t):</div><div class="line">    print(&apos;in task_canceller&apos;)</div><div class="line">    t.cancel()</div><div class="line">    print(&apos;canceled the task&apos;)</div><div class="line"></div><div class="line">async def main(loop):</div><div class="line">    print(&apos;createing task&apos;)</div><div class="line">    task = loop.create_task(task_func())</div><div class="line">    loop.call_soon(task_canceller, task)</div><div class="line">    try:</div><div class="line">        await task</div><div class="line">    except asyncio.CancelledError:</div><div class="line">        print(&apos;main() also sees task as canceled&apos;)</div><div class="line"></div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    event_loop.run_until_complete(main(event_loop))</div><div class="line">finally:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
-<p>如果需要，截获异常能够提供机会来清理已经完成的任务。</p>
+<p>如果需要，截获异常能够有机会来清理已经完成的任务。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_cancel_task2.py</div><div class="line"></div><div class="line">creating task</div><div class="line">in task_func, sleeping</div><div class="line">in task_canceller</div><div class="line">canceled the task</div><div class="line">task_func was canceled</div><div class="line">main() also sees task as canceled</div></pre></td></tr></table></figure>
-<h2 id="从协程生成Task"><a href="#从协程生成Task" class="headerlink" title="从协程生成Task"></a>从协程生成Task</h2><p>ensure_future()函数返回Task绑定到协程上。Task实例可以通过其他代码等待执行，而不知道原始协程被构造或调用。</p>
+<h2 id="由协程生成Task"><a href="#由协程生成Task" class="headerlink" title="由协程生成Task"></a>由协程生成Task</h2><p>ensure_future()函数返回的Task可以绑定到协程上。然后Task实例可以传递给其他代码，这些代码可以在不知道原始协程是如何构造或调用的情况下等待它。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"># asyncio_ensure_future.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line"></div><div class="line">async def wrapped():</div><div class="line">    print(&apos;wrapped&apos;)</div><div class="line">    return &apos;result&apos;</div><div class="line"></div><div class="line">async def inner(task):</div><div class="line">    print(&apos;inner: starting&apos;)</div><div class="line">    print(&apos;inner: waiting for &#123;!r&#125;&apos;.format(task))</div><div class="line">    result = await task</div><div class="line">    print(&apos;inner: task returned &#123;!r&#125;&apos;.format(result))</div><div class="line"></div><div class="line"></div><div class="line">async def starter():</div><div class="line">    print(&apos;starter: creating task&apos;)</div><div class="line">    task = asyncio.ensure_future(wrapped())</div><div class="line">    print(&apos;starter: waiting for inner&apos;)</div><div class="line">    await inner(task)</div><div class="line">    print(&apos;starter: inner returned&apos;)</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    print(&apos;entering event loop&apos;)</div><div class="line">    result = event_loop.run_until_complete(starter())</div><div class="line">finally:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
 <p>记住ensure_future()函数生成的协程不会执行,直到使用await允许它执行。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_ensure_future.py</div><div class="line"></div><div class="line">entering event loop</div><div class="line">starter: creating task</div><div class="line">starter: waiting <span class="keyword">for</span> inner</div><div class="line">inner: starting</div><div class="line">inner: waiting <span class="keyword">for</span> &lt;Task pending coro=&lt;wrapped() running at asyncio_ensure_future.py:12&gt;&gt;</div><div class="line">wrapped</div><div class="line">inner: task returned <span class="string">'result'</span></div><div class="line">starter: inner returned</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ python3 asyncio_ensure_future.py</div><div class="line"></div><div class="line">entering event loop</div><div class="line">starter: creating task</div><div class="line">starter: waiting for inner</div><div class="line">inner: starting</div><div class="line">inner: waiting for &lt;Task pending coro=&lt;wrapped() running at asyncio_ensure_future.py:12&gt;&gt;</div><div class="line">wrapped</div><div class="line">inner: task returned &apos;result&apos;</div><div class="line">starter: inner returned</div></pre></td></tr></table></figure>
 <p><a href="https://pymotw.com/3/asyncio/tasks.html" target="_blank" rel="external">原文链接</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Task是与事件循环交互的主要方式之一。 Task包装协程并跟踪它的完成。 Tasks是Future的子类，所以其他协程等待他们并且每一个都会获得task完成时返回的结果。&lt;/p&gt;
-&lt;h2 id=&quot;启动Task&quot;&gt;&lt;a href=&quot;#启动Task&quot; class=&quot;heade
+      &lt;p&gt;Task是与事件循环交互的主要方式之一。 Task包装协程并跟踪它的完成。 Tasks是Future的子类，所以其他协程等待他们并且每一个协程都会获得task完成时返回的结果。&lt;/p&gt;
+&lt;h2 id=&quot;启动Task&quot;&gt;&lt;a href=&quot;#启动Task&quot; class=&quot;hea
     
     </summary>
     
@@ -470,16 +478,16 @@
   </entry>
   
   <entry>
-    <title>异步生成结果</title>
+    <title>asyncio之异步生成结果</title>
     <link href="https://www.songcser.com/2017/09/26/producing-results-asynchronously/"/>
     <id>https://www.songcser.com/2017/09/26/producing-results-asynchronously/</id>
     <published>2017-09-26T18:01:09.000Z</published>
-    <updated>2017-09-28T06:14:50.000Z</updated>
+    <updated>2017-12-08T08:17:25.000Z</updated>
     
-    <content type="html"><![CDATA[<p>Future代表任务的结果还没有生成。事件循环能够监控Future对象的状态来标示完成，运行应用的一部分等待另一部分完成任务。</p>
-<h2 id="编写Future"><a href="#编写Future" class="headerlink" title="编写Future"></a>编写Future</h2><p>Future的行为和协程一样，因此一些有用的等待协程的方法也可以用来等待Future的完成。这个例子将future传递给事件循环的run_until_complete()方法。</p>
+    <content type="html"><![CDATA[<p>Future代表任务的结果还没有生成。事件循环能够监控Future对象的状态来标示完成，并且允许应用的一部分等待另一部分完成任务。</p>
+<h2 id="等待Future"><a href="#等待Future" class="headerlink" title="等待Future"></a>等待Future</h2><p>Future的行为和协程一样，因此一些有用的等待协程的方法也可以用来等待Future的完成。这个例子将future传递给事件循环的run_until_complete()方法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"># asyncio_future_event_loop.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line"></div><div class="line">def mark_done(future, result):</div><div class="line">    print(&apos;setting future result to &#123;!r&#125;&apos;.format(result))</div><div class="line">    future.set_result(result)</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    all_done = asyncio.Future()</div><div class="line"></div><div class="line">    print(&apos;acheduling mark_done&apos;)</div><div class="line">    event_loop.call_soon(mark_done, all_done, &apos;the result&apos;)</div><div class="line"></div><div class="line">    print(&apos;entering event loop&apos;)</div><div class="line">    result = event_loop.run_untile_complete(all_done)</div><div class="line">    print(&apos;returned result: &#123;!r&#125;&apos;.format(result))</div><div class="line">finally:</div><div class="line">    print(&apos;closing event loop&apos;)</div><div class="line">    event_loop.close()</div><div class="line"></div><div class="line">print(&apos;future result: &#123;!r&#125;&apos;.format(all_done.result()))</div></pre></td></tr></table></figure>
-<p>当set_result()方法被调用时Future的state改变了，并且Future实例保存结果以便最后返回结果。</p>
+<p>当set_result()方法被调用时Future的state改变了，并且Future实例保存结果以便最后返回。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># python3 asyncio_future_event_loop.py</div><div class="line"></div><div class="line">scheduling mark_done</div><div class="line">entering event loop</div><div class="line">setting future result to &apos;the result&apos;</div><div class="line">returned result: &apos;the result&apos;</div><div class="line">closing event loop</div><div class="line">future result: &apos;the result&apos;</div></pre></td></tr></table></figure>
 <p>Future也可以使用await关键字，如下所示。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"># asycnio_future_await.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line"></div><div class="line">def mark_done(future, result):</div><div class="line">    print(&apos;setting future result to &#123;!r&#125;&apos;.format(result))</div><div class="line">    future.set_result(result)</div><div class="line"></div><div class="line">async def main(loop):</div><div class="line">    all_done = asyncio.Future()</div><div class="line"></div><div class="line">    print(&apos;scheduling mark_done&apos;)</div><div class="line">    loop.call_soon(mark_done, all_done, &apos;the result&apos;)</div><div class="line"></div><div class="line">    result = await all_done</div><div class="line">    print(&apos;returned result: &#123;!r&#125;&apos;.format(result))</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    event_loop.run_untile_complete(main(event_loop))</div><div class="line">finally:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
@@ -487,18 +495,26 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># python3 asyncio_future_await.py</div><div class="line"></div><div class="line">scheduling mark_done</div><div class="line">setting future result to &apos;the result&apos;</div><div class="line">returned result: &apos;the result&apos;</div></pre></td></tr></table></figure>
 <h2 id="Future回调函数"><a href="#Future回调函数" class="headerlink" title="Future回调函数"></a>Future回调函数</h2><p>除了像协程一样工作，Future也可以在执行结束之后调用回调函数。回调函数按照注册的顺序进行调用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"># asyncio_future_callback.py</div><div class="line"></div><div class="line">import asyncio</div><div class="line">import functools</div><div class="line"></div><div class="line">def callback(future, n):</div><div class="line">    print(&apos;&#123;&#125;: future done: &#123;&#125;&apos;.format(n, future.result()))</div><div class="line"></div><div class="line">async def register_callbacks(all_done):</div><div class="line">    print(&apos;registering callbacks on future&apos;)</div><div class="line">    all_done.add_done_callback(functools.partial(callback, n=1))</div><div class="line">    all_done.add_done_callback(functools.partial(callback, n=2))</div><div class="line"></div><div class="line">async def main(all_done):</div><div class="line">    await register_callbacks(all_done)</div><div class="line">    print(&apos;setting result of future&apos;)</div><div class="line">    all_done.set_result(&apos;the result&apos;)</div><div class="line"></div><div class="line">event_loop = asyncio.get_event_loop()</div><div class="line">try:</div><div class="line">    all_done = asyncio.Future()</div><div class="line">    event_loop.run_untile_complete(main(all_done))</div><div class="line">finally:</div><div class="line">    event_loop.close()</div></pre></td></tr></table></figure>
-<p>回调函数要求应该有Future实例为第一个参数，传给回调的额外参数使用functools.partial()进行包裹</p>
+<p>回调函数要求Future实例为第一个参数，传给回调的额外参数使用functools.partial()进行包裹</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># python3 asyncio_future_callback.py</div><div class="line"></div><div class="line">registering callbacks on future</div><div class="line">setting result of future</div><div class="line">1: future done: the result</div><div class="line">2: future done: the result</div></pre></td></tr></table></figure>
 <p><a href="https://pymotw.com/3/asyncio/futures.html" target="_blank" rel="external">原文链接</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Future代表任务的结果还没有生成。事件循环能够监控Future对象的状态来标示完成，运行应用的一部分等待另一部分完成任务。&lt;/p&gt;
-&lt;h2 id=&quot;编写Future&quot;&gt;&lt;a href=&quot;#编写Future&quot; class=&quot;headerlink&quot; title=&quot;编写Fut
+      &lt;p&gt;Future代表任务的结果还没有生成。事件循环能够监控Future对象的状态来标示完成，并且允许应用的一部分等待另一部分完成任务。&lt;/p&gt;
+&lt;h2 id=&quot;等待Future&quot;&gt;&lt;a href=&quot;#等待Future&quot; class=&quot;headerlink&quot; title=&quot;等待F
     
     </summary>
     
+      <category term="asyncio" scheme="https://www.songcser.com/categories/asyncio/"/>
+    
+    
+      <category term="asyncio" scheme="https://www.songcser.com/tags/asyncio/"/>
+    
+      <category term="异步" scheme="https://www.songcser.com/tags/%E5%BC%82%E6%AD%A5/"/>
+    
+      <category term="协程" scheme="https://www.songcser.com/tags/%E5%8D%8F%E7%A8%8B/"/>
     
   </entry>
   
@@ -548,7 +564,7 @@
     <link href="https://www.songcser.com/2017/09/25/cooperative-multitasking-with-coroutines/"/>
     <id>https://www.songcser.com/2017/09/25/cooperative-multitasking-with-coroutines/</id>
     <published>2017-09-25T10:52:24.000Z</published>
-    <updated>2017-12-07T03:00:46.000Z</updated>
+    <updated>2017-12-07T07:07:09.000Z</updated>
     
     <content type="html"><![CDATA[<p>协程是一种用于并发操作的语言结构。协程函数在被调用时创建协程对象，调用者可以使用协程的send()的方法来运行代码。协程通过await可以停止其他协程的执行。停止后的协程的状态是meaintained,在下次被唤醒时从这个地方继续运行。</p>
 <h2 id="开始一个协程"><a href="#开始一个协程" class="headerlink" title="开始一个协程"></a>开始一个协程</h2><p>有几种不同的方法可以使用asyncio事件循环启动协程。最简单的方式是使用run_until_complete()方法，直接运行协程。</p>
@@ -578,8 +594,14 @@
     
     </summary>
     
+      <category term="asyncio" scheme="https://www.songcser.com/categories/asyncio/"/>
     
-      <category term="asyncio 异步 协程" scheme="https://www.songcser.com/tags/asyncio-%E5%BC%82%E6%AD%A5-%E5%8D%8F%E7%A8%8B/"/>
+    
+      <category term="asyncio" scheme="https://www.songcser.com/tags/asyncio/"/>
+    
+      <category term="异步" scheme="https://www.songcser.com/tags/%E5%BC%82%E6%AD%A5/"/>
+    
+      <category term="协程" scheme="https://www.songcser.com/tags/%E5%8D%8F%E7%A8%8B/"/>
     
   </entry>
   
@@ -588,7 +610,7 @@
     <link href="https://www.songcser.com/2017/09/24/asynchronous-concurrency-concepts/"/>
     <id>https://www.songcser.com/2017/09/24/asynchronous-concurrency-concepts/</id>
     <published>2017-09-24T09:42:10.000Z</published>
-    <updated>2017-12-07T01:38:54.000Z</updated>
+    <updated>2017-12-07T07:06:52.000Z</updated>
     
     <content type="html"><![CDATA[<p>现在大多数并发模型是线性写入的，并且依赖于语言运行时或操作系统的底层线程或进程进行管理,来适当的改变程序运行时的上下文。而基于asyncio的应用程序是由应用代码处理上下文的切换，使用正确的技术取决于几个相关的概念。</p>
 <p>asyncio框架是以事件循环为中心，是负责高效处理IO事件，系统事件和应用上下文切换的第一类对象。并且提供了几个循环实现，以有效地利用操作系统功能。虽然通常可以自动的选择合理的默认值，但应用程序也可以选择特定的事件循环。这在Windows下是有用的，例如，一些支持外部程序的循环类在进行网络IO时可以提高效率。</p>
@@ -606,8 +628,14 @@
     
     </summary>
     
+      <category term="asyncio" scheme="https://www.songcser.com/categories/asyncio/"/>
     
-      <category term="asyncio 异步 协程" scheme="https://www.songcser.com/tags/asyncio-%E5%BC%82%E6%AD%A5-%E5%8D%8F%E7%A8%8B/"/>
+    
+      <category term="asyncio" scheme="https://www.songcser.com/tags/asyncio/"/>
+    
+      <category term="异步" scheme="https://www.songcser.com/tags/%E5%BC%82%E6%AD%A5/"/>
+    
+      <category term="协程" scheme="https://www.songcser.com/tags/%E5%8D%8F%E7%A8%8B/"/>
     
   </entry>
   
