@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.songcser.com/2017/09/26/executing-tasks-concurrently/</loc>
+    <loc>https://www.songcser.com/2017/10/20/asynchronous-IO-using-coroutines-and-streams/</loc>
     
-    <lastmod>2017-12-08T09:02:18.000Z</lastmod>
+    <lastmod>2017-12-12T02:54:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.songcser.com/2017/10/13/asynchronous-IO-with-protocol-class-abstractions/</loc>
+    
+    <lastmod>2017-12-11T09:18:34.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.songcser.com/2017/10/11/synchronization-primitives/</loc>
+    
+    <lastmod>2017-12-11T07:44:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.songcser.com/2017/10/10/composing-coroutines-with-control-structures/</loc>
+    
+    <lastmod>2017-12-11T06:47:29.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.songcser.com/2017/09/26/scheduling-calls-to-regular-functions/</loc>
+    
+    <lastmod>2017-12-08T09:49:54.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.songcser.com/2017/09/26/producing-results-asynchronously/</loc>
     
-    <lastmod>2017-12-08T08:17:25.000Z</lastmod>
+    <lastmod>2017-12-08T09:49:20.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.songcser.com/2017/09/26/executing-tasks-concurrently/</loc>
+    
+    <lastmod>2017-12-08T09:48:35.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.songcser.com/2017/09/25/cooperative-multitasking-with-coroutines/</loc>
+    
+    <lastmod>2017-12-08T09:47:17.000Z</lastmod>
     
   </url>
   
@@ -23,23 +65,9 @@
   </url>
   
   <url>
-    <loc>https://www.songcser.com/2017/09/25/cooperative-multitasking-with-coroutines/</loc>
-    
-    <lastmod>2017-12-07T07:07:09.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.songcser.com/2017/09/24/asynchronous-concurrency-concepts/</loc>
     
     <lastmod>2017-12-07T07:06:52.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.songcser.com/2017/09/26/scheduling-calls-to-regular-functions/</loc>
-    
-    <lastmod>2017-12-07T07:04:17.000Z</lastmod>
     
   </url>
   
@@ -75,34 +103,6 @@
     <loc>https://www.songcser.com/2017/10/23/using-ssl/</loc>
     
     <lastmod>2017-10-25T02:38:47.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.songcser.com/2017/10/20/asynchronous-IO-using-coroutines-and-streams/</loc>
-    
-    <lastmod>2017-10-23T09:47:27.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.songcser.com/2017/10/13/asynchronous-IO-with-protocol-class-abstractions/</loc>
-    
-    <lastmod>2017-10-19T09:50:47.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.songcser.com/2017/10/11/synchronization-primitives/</loc>
-    
-    <lastmod>2017-10-12T05:17:43.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.songcser.com/2017/10/10/composing-coroutines-with-control-structures/</loc>
-    
-    <lastmod>2017-10-10T09:29:17.000Z</lastmod>
     
   </url>
   

@@ -201,6 +201,71 @@
         </li>
         
         <li class="archive-list-item">
+          <h2><a href="/2017/10/20/asynchronous-IO-using-coroutines-and-streams/">asyncio之协程异步IO流</a></h2>
+          <p>
+             这节练习两个例程实现简单的服务端和客户端的替换版本。使用协程和asyncio流API代替protocol和transport抽象类。这节操作较低级别的抽象层而不是以前讨论的Protocol API，但是产生的事件是相似的。 
+   服务端  首先导入需要的模块asyncio和logging,然后创...
+          </p>
+          <ul class="tag-list clearfix">
+            
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
+            
+          </ul>
+          <div class="post-info">
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
+            <span>Published {{moment(1508461515000).fromNow()}}</span>
+          </div>
+        </li>
+        
+        <li class="archive-list-item">
+          <h2><a href="/2017/10/13/asynchronous-IO-with-protocol-class-abstractions/">asyncio之抽象类Protocol异步IO</a></h2>
+          <p>
+             到目前为止，那些例子都避免混合并发和IO操作，以便每次都关注一个概念。当IO阻塞时进行上下文切换是asyncio一个主要的用例。 基于已经介绍的并发概念，这节验证两个例程，一个简单的服务端和客户端，和在socket和socketserver那节中的例子相似。客户端能够连接服务端，发送数据然后接收相...
+          </p>
+          <ul class="tag-list clearfix">
+            
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
+            
+          </ul>
+          <div class="post-info">
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
+            <span>Published {{moment(1507881270000).fromNow()}}</span>
+          </div>
+        </li>
+        
+        <li class="archive-list-item">
+          <h2><a href="/2017/10/11/synchronization-primitives/">asyncio之同步原语</a></h2>
+          <p>
+             尽管asyncio应用经常是单线程进程运行，但是也同样可以构建同步应用。基于延迟、IO中断和其他事件的每一个coroutine或task可能在不可预测的顺序执行。为了支持安全同步，asyncio提供了和threading和multiprocessing模块相同的低水平原始接口。 
+   锁  锁可...
+          </p>
+          <ul class="tag-list clearfix">
+            
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
+            
+          </ul>
+          <div class="post-info">
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
+            <span>Published {{moment(1507687255000).fromNow()}}</span>
+          </div>
+        </li>
+        
+        <li class="archive-list-item">
           <h2><a href="/2017/09/26/producing-results-asynchronously/">asyncio之异步生成结果</a></h2>
           <p>
              Future代表任务的结果还没有生成。事件循环能够监控Future对象的状态来标示完成，并且允许应用的一部分等待另一部分完成任务。 

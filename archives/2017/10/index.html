@@ -227,57 +227,75 @@
         </li>
         
         <li class="archive-list-item">
-          <h2><a href="/2017/10/20/asynchronous-IO-using-coroutines-and-streams/">协程异步IO流</a></h2>
+          <h2><a href="/2017/10/20/asynchronous-IO-using-coroutines-and-streams/">asyncio之协程异步IO流</a></h2>
           <p>
              这节练习两个例程实现简单的服务端和客户端的替换版本。使用协程和asyncio流API代替protocol和transport抽象类。这节操作较低级别的抽象层而不是以前讨论的Protocol API，但是产生的事件是相似的。 
    服务端  首先导入需要的模块asyncio和logging,然后创...
           </p>
           <ul class="tag-list clearfix">
             
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
+            
           </ul>
           <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
             <span>Published {{moment(1508461515000).fromNow()}}</span>
           </div>
         </li>
         
         <li class="archive-list-item">
-          <h2><a href="/2017/10/13/asynchronous-IO-with-protocol-class-abstractions/">抽象类Protocol异步IO</a></h2>
+          <h2><a href="/2017/10/13/asynchronous-IO-with-protocol-class-abstractions/">asyncio之抽象类Protocol异步IO</a></h2>
           <p>
-             到目前为止，那些例子都避免混合并发和IO操作，以便每次都关注一个概念。当IO阻塞时进行上下文切换是asyncio一个主要的用例。基于已经介绍的并发概念，这节验证两个例程，一个简单的服务端和客户端，和在socket和socketserver那节中的例子相似。客户端能够连接服务端，发送数据然后接收相同...
+             到目前为止，那些例子都避免混合并发和IO操作，以便每次都关注一个概念。当IO阻塞时进行上下文切换是asyncio一个主要的用例。 基于已经介绍的并发概念，这节验证两个例程，一个简单的服务端和客户端，和在socket和socketserver那节中的例子相似。客户端能够连接服务端，发送数据然后接收相...
           </p>
           <ul class="tag-list clearfix">
             
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
+            
           </ul>
           <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
             <span>Published {{moment(1507881270000).fromNow()}}</span>
           </div>
         </li>
         
         <li class="archive-list-item">
-          <h2><a href="/2017/10/11/synchronization-primitives/">同步原语</a></h2>
+          <h2><a href="/2017/10/11/synchronization-primitives/">asyncio之同步原语</a></h2>
           <p>
-             尽管asyncio应用经常是单线程进程运行，但是也同样可以同步应用构建。每一个coroutine或task可能在不可预测的顺序执行，基于延迟、IO中断和其他事件。为了支持安全同步，asyncio提供了和threading和multiprocessing模块相同的低水平的原始接口。 
-   锁  锁...
+             尽管asyncio应用经常是单线程进程运行，但是也同样可以构建同步应用。基于延迟、IO中断和其他事件的每一个coroutine或task可能在不可预测的顺序执行。为了支持安全同步，asyncio提供了和threading和multiprocessing模块相同的低水平原始接口。 
+   锁  锁可...
           </p>
           <ul class="tag-list clearfix">
             
+            <li class="tag-list-item">asyncio</li>
+            
+            <li class="tag-list-item">异步</li>
+            
+            <li class="tag-list-item">协程</li>
+            
           </ul>
           <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> Uncategorized </span>
-            <span><i class="fa fa-tag"></i> 0 </span>
+            <span><i class="fa fa-folder-open"></i> asyncio </span>
+            <span><i class="fa fa-tag"></i> 3 </span>
             <span>Published {{moment(1507687255000).fromNow()}}</span>
           </div>
         </li>
         
         <li class="archive-list-item">
-          <h2><a href="/2017/10/10/composing-coroutines-with-control-structures/">组合协程控制结构</a></h2>
+          <h2><a href="/2017/10/10/composing-coroutines-with-control-structures/">asyncio之协程控制结构</a></h2>
           <p>
-             一些协程的之间的线性控制流是很容易进行管理的使用语言内置的关键字await。更加复杂的结构使用asyncio的工具也可以允许一个协程等待一些其他的并发完成。 
-   等待多个协程运行  经常会分割一个操作为多个部分并且分离执行。例如，下载多个远程资源或者查询远程API。在这种情况下，执行的顺序是无...
+             使用语言内置的关键字await,一些协程之间的线性控制流是很容易进行管理的。更加复杂的结构使用asyncio的工具也可以做到允许一个协程等待其他协程的并发完成。 
+   等待多个协程运行  经常会分割一个操作为多个部分分离执行。例如，下载多个远程资源或者查询远程API。在这种情况下，执行的顺序是无...
           </p>
           <ul class="tag-list clearfix">
             
