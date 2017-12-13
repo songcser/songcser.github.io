@@ -684,7 +684,7 @@
     <link href="https://www.songcser.com/2017/09/24/asynchronous-concurrency-concepts/"/>
     <id>https://www.songcser.com/2017/09/24/asynchronous-concurrency-concepts/</id>
     <published>2017-09-24T09:42:10.000Z</published>
-    <updated>2017-12-13T13:04:48.000Z</updated>
+    <updated>2017-12-13T13:06:14.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>最近在学习python3中新的异步模块asyncio, <a href="https://pymotw.com/3/" target="_blank" rel="external">PyMOTW-3</a>中对asyncio有详细的介绍，所以借此机会将相关的文章翻译出来，供大家一起学习。<br>由于英文水平有限，翻译难免有些错误，希望大家指正。</p>
