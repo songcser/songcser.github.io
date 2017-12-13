@@ -8,12 +8,12 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
-    域名服务交互 | Herry&#39;s blog
+    asyncio之域名服务交互 | Herry&#39;s blog
   </title>
   <meta name="description" content="">
   
   <meta name="keywords" content="
-  
+  asyncio,异步,协程,DNS
   ">
   
   <meta name="author" content="songcser">
@@ -107,13 +107,13 @@
         <a href="/tags" class="header-toolbar-left"><i
                   class="fa fa-tags"></i> Tags </a>
         <a href="/tags"
-           class="header-toolbar-right"> 3 </a>
+           class="header-toolbar-right"> 8 </a>
       </li>
       <li>
         <a href="/categories" class="header-toolbar-left"><i
                   class="fa fa-folder-open"></i> Categories </a>
         <a href="/categories"
-           class="header-toolbar-right"> 1 </a>
+           class="header-toolbar-right"> 2 </a>
       </li>
     </ul>
     <h2 class="header-title">
@@ -148,9 +148,9 @@
   </h3>
 
   <article class="post-content">
-    <h1>域名服务交互</h1>
-    <p>应用程序使用网络与服务器进行通信时可需要域名服务(DNS)，如在主机名和IP地址之间进行转换。asyncio在事件循环上有方便的方法在后台进行处理，以避免在查询时阻塞。</p>
-<h2 id="根据域名查找地址"><a href="#根据域名查找地址" class="headerlink" title="根据域名查找地址"></a>根据域名查找地址</h2><p>使用getaddrinfo()协程方法将主机名和端口号转换成IP和IPv6地址。和在socket模块中的方法版本一样，返回值是一个包含五个信息的tuple列表。</p>
+    <h1>asyncio之域名服务交互</h1>
+    <p>应用程序使用网络与服务器进行通信时可能需要域名服务(DNS)，如在主机名和IP地址之间进行转换。asyncio事件循环有方便的方法在后台进行处理，以避免在查询时阻塞。</p>
+<h2 id="根据域名查找地址"><a href="#根据域名查找地址" class="headerlink" title="根据域名查找地址"></a>根据域名查找地址</h2><p>使用getaddrinfo()协程方法将主机名和端口号转换成IP或IPv6地址。和在socket模块中的方法版本一样，返回值是一个包含五个信息的tuple列表。</p>
 <ol>
 <li>地址族</li>
 <li>地址类型</li>

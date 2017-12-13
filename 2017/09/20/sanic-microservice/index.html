@@ -8,12 +8,12 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
-    Sanic Micro Service | Herry&#39;s blog
+    基于Sanic的微服务框架 | Herry&#39;s blog
   </title>
   <meta name="description" content="">
   
   <meta name="keywords" content="
-  
+  asyncio,sanic,aiohttp,peewee,opentracing
   ">
   
   <meta name="author" content="songcser">
@@ -107,13 +107,13 @@
         <a href="/tags" class="header-toolbar-left"><i
                   class="fa fa-tags"></i> Tags </a>
         <a href="/tags"
-           class="header-toolbar-right"> 3 </a>
+           class="header-toolbar-right"> 8 </a>
       </li>
       <li>
         <a href="/categories" class="header-toolbar-left"><i
                   class="fa fa-folder-open"></i> Categories </a>
         <a href="/categories"
-           class="header-toolbar-right"> 1 </a>
+           class="header-toolbar-right"> 2 </a>
       </li>
     </ul>
     <h2 class="header-title">
@@ -148,7 +148,7 @@
   </h3>
 
   <article class="post-content">
-    <h1>Sanic Micro Service</h1>
+    <h1>基于Sanic的微服务框架</h1>
     <p>基于sanic的微服务基础架构</p>
 <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>使用python做web开发面临的一个最大的问题就是性能，在解决C10K问题上显的有点吃力。有些异步框架Tornado、Twisted、Gevent 等就是为了解决性能问题。这些框架在性能上有些提升，但是也出现了各种古怪的问题难以解决。</p>
 <p>在python3.6中，官方的异步协程库asyncio正式成为标准。在保留便捷性的同时对性能有了很大的提升,已经出现许多的异步框架使用asyncio。</p>

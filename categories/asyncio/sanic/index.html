@@ -163,10 +163,10 @@
   <ul class="clearfix">
     <li class="">
       <a href="/">Overview</a></li>
-    <li class="selected">
+    <li class="">
       <a href="/archives">Posts <span class="counter">17</span></a>
     </li>
-    <li class="">
+    <li class="selected">
       <a href="/categories">Categories <span
                 class="counter">2</span></a></li>
     <li class="">
@@ -178,70 +178,29 @@
       <ul class="archive-list">
         
         <li class="archive-list-item">
-          <h2><a href="/2017/11/21/debugging-with-asyncio/">asyncio之调试</a></h2>
+          <h2><a href="/2017/09/20/sanic-microservice/">基于Sanic的微服务框架</a></h2>
           <p>
-             asyncio构建了一些有用的调试特性。 
- 首先，事件循环在运行时使用logging来发送状态信息。在应用中启用日志就会获取到一些信息。其他的可以打开告诉事件循环来发送更多的调试信息。通过调用set_debug()传递boolean值来表明是否启动调试。 
- 由于构建在asyncio上的应用程序...
+             基于sanic的微服务基础架构 
+   介绍  使用python做web开发面临的一个最大的问题就是性能，在解决C10K问题上显的有点吃力。有些异步框架Tornado、Twisted、Gevent 等就是为了解决性能问题。这些框架在性能上有些提升，但是也出现了各种古怪的问题难以解决。 
+ 在pyt...
           </p>
           <ul class="tag-list clearfix">
             
             <li class="tag-list-item">asyncio</li>
             
-            <li class="tag-list-item">异步</li>
+            <li class="tag-list-item">sanic</li>
             
-            <li class="tag-list-item">协程</li>
+            <li class="tag-list-item">aiohttp</li>
             
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> asyncio </span>
-            <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1511228654000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/11/13/combining-coroutines-with-threads-and-processes/">asyncio之协程和线程进程组合</a></h2>
-          <p>
-             许多已经存在的库还没有使用原生的asyncio。可能造成阻塞或者依赖并发特性的模块不可用。还是有可能在基于asyncio的应用中使用这些库，通过使用concurrent.futures的executor可以在一个分离的线程或者进程中运行代码。 
-   线程  事件循环的run_in_executo...
-          </p>
-          <ul class="tag-list clearfix">
+            <li class="tag-list-item">peewee</li>
             
-            <li class="tag-list-item">asyncio</li>
-            
-            <li class="tag-list-item">异步</li>
-            
-            <li class="tag-list-item">协程</li>
+            <li class="tag-list-item">opentracing</li>
             
           </ul>
           <div class="post-info">
             <span><i class="fa fa-folder-open"></i> asyncio </span>
-            <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1510558321000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/11/06/receiving-unix-signals/">asyncio之接收Unix信号</a></h2>
-          <p>
-             通常Unix系统事件通知需要中断应用来触发执行。当使用asyncio时，信号处理回调会与事件循环管理的其他协程的回调交错进行。这导致中断的功能更少，因此需要提供安全防护来清理不完整的操作。 
- 信号处理必须是常规的函数调用，不是协程。 
-      1  2  3  4  5  6  7  8  ...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio</li>
-            
-            <li class="tag-list-item">异步</li>
-            
-            <li class="tag-list-item">协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> asyncio </span>
-            <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1509930774000).fromNow()}}</span>
+            <span><i class="fa fa-tag"></i> 5 </span>
+            <span>Published {{moment(1505870750000).fromNow()}}</span>
           </div>
         </li>
         

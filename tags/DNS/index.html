@@ -163,41 +163,19 @@
   <ul class="clearfix">
     <li class="">
       <a href="/">Overview</a></li>
-    <li class="selected">
+    <li class="">
       <a href="/archives">Posts <span class="counter">17</span></a>
     </li>
     <li class="">
       <a href="/categories">Categories <span
                 class="counter">2</span></a></li>
-    <li class="">
+    <li class="selected">
       <a href="/tags">Tags <span class="counter">8</span></a></li>
   </ul>
 </nav>
 
     <div class="body-secondary">
       <ul class="archive-list">
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/10/26/working-with-subprocesses/">asyncio之子进程交互</a></h2>
-          <p>
-             经常需要和其他的一些程序和进程一起工作，以便使用已经存在的代码而不用重写，或者访问Python中已经不可用的库或特性。和网络IO一样，asyncio包含两个抽象概念来启动其他程序然后进行交互。 
-   对于Subprocesses使用Protocol Abstraction  这个例子使用协程来启...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio</li>
-            
-            <li class="tag-list-item">异步</li>
-            
-            <li class="tag-list-item">协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> asyncio </span>
-            <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1509004689000).fromNow()}}</span>
-          </div>
-        </li>
         
         <li class="archive-list-item">
           <h2><a href="/2017/10/25/interacting-with-domain-name-services/">asyncio之域名服务交互</a></h2>
@@ -220,116 +198,6 @@
             <span><i class="fa fa-folder-open"></i> asyncio </span>
             <span><i class="fa fa-tag"></i> 4 </span>
             <span>Published {{moment(1508899301000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/10/23/using-ssl/">asyncio之使用SSL</a></h2>
-          <p>
-             asyncio内置支持在套接字上启用SSL通信。通过将SSLContext实例传递给协程来创建服务器或者客户端连接，可支持并确保在将套接字交给应用程序使用之前启用SSL协议。 
- 比以前章节中以协程为基础的服务端和客户端更新了一些小变化。首先创建证书和key文件。使用下面命令生成自签名证书。 
- ...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio</li>
-            
-            <li class="tag-list-item">异步</li>
-            
-            <li class="tag-list-item">协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> asyncio </span>
-            <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1508752235000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/10/20/asynchronous-IO-using-coroutines-and-streams/">asyncio之协程异步IO流</a></h2>
-          <p>
-             这节练习两个例程实现简单的服务端和客户端的替换版本。使用协程和asyncio流API代替protocol和transport抽象类。这节操作较低级别的抽象层而不是以前讨论的Protocol API，但是产生的事件是相似的。 
-   服务端  首先导入需要的模块asyncio和logging,然后创...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio</li>
-            
-            <li class="tag-list-item">异步</li>
-            
-            <li class="tag-list-item">协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> asyncio </span>
-            <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1508461515000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/10/13/asynchronous-IO-with-protocol-class-abstractions/">asyncio之抽象类Protocol异步IO</a></h2>
-          <p>
-             到目前为止，那些例子都避免混合并发和IO操作，以便每次都关注一个概念。当IO阻塞时进行上下文切换是asyncio一个主要的用例。 基于已经介绍的并发概念，这节验证两个例程，一个简单的服务端和客户端，和在socket和socketserver那节中的例子相似。客户端能够连接服务端，发送数据然后接收相...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio</li>
-            
-            <li class="tag-list-item">异步</li>
-            
-            <li class="tag-list-item">协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> asyncio </span>
-            <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1507881270000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/10/11/synchronization-primitives/">asyncio之同步原语</a></h2>
-          <p>
-             尽管asyncio应用经常是单线程进程运行，但是也同样可以构建同步应用。基于延迟、IO中断和其他事件的每一个coroutine或task可能在不可预测的顺序执行。为了支持安全同步，asyncio提供了和threading和multiprocessing模块相同的低水平原始接口。 
-   锁  锁可...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio</li>
-            
-            <li class="tag-list-item">异步</li>
-            
-            <li class="tag-list-item">协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> asyncio </span>
-            <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1507687255000).fromNow()}}</span>
-          </div>
-        </li>
-        
-        <li class="archive-list-item">
-          <h2><a href="/2017/10/10/composing-coroutines-with-control-structures/">asyncio之协程控制结构</a></h2>
-          <p>
-             使用语言内置的关键字await,一些协程之间的线性控制流是很容易进行管理的。更加复杂的结构使用asyncio的工具也可以做到允许一个协程等待其他协程的并发完成。 
-   等待多个协程运行  经常会分割一个操作为多个部分分离执行。例如，下载多个远程资源或者查询远程API。在这种情况下，执行的顺序是无...
-          </p>
-          <ul class="tag-list clearfix">
-            
-            <li class="tag-list-item">asyncio</li>
-            
-            <li class="tag-list-item">异步</li>
-            
-            <li class="tag-list-item">协程</li>
-            
-          </ul>
-          <div class="post-info">
-            <span><i class="fa fa-folder-open"></i> asyncio </span>
-            <span><i class="fa fa-tag"></i> 3 </span>
-            <span>Published {{moment(1507597997000).fromNow()}}</span>
           </div>
         </li>
         
