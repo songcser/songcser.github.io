@@ -733,11 +733,11 @@
   </entry>
   
   <entry>
-    <title>基于Sanic的微服务框架</title>
+    <title>基于Sanic的微服务基础架构</title>
     <link href="https://www.songcser.com/2017/09/20/sanic-microservice/"/>
     <id>https://www.songcser.com/2017/09/20/sanic-microservice/</id>
     <published>2017-09-20T01:25:50.000Z</published>
-    <updated>2017-12-13T06:07:23.000Z</updated>
+    <updated>2017-12-29T06:45:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>基于sanic的微服务基础架构</p>
 <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>使用python做web开发面临的一个最大的问题就是性能，在解决C10K问题上显的有点吃力。有些异步框架Tornado、Twisted、Gevent 等就是为了解决性能问题。这些框架在性能上有些提升，但是也出现了各种古怪的问题难以解决。</p>
@@ -756,8 +756,10 @@
 <li><strong>使用unittest做单元测试，并且使用mock来避免访问其他微服务。</strong></li>
 <li><strong>使用swagger做API标准，能自动生成API文档。</strong></li>
 </ul>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>项目地址： <a href="https://github.com/songcser/sanic-ms" target="_blank" rel="external">sanic-ms</a></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h4 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h4><p><a href="https://github.com/songcser/sanic-ms" target="_blank" rel="external">sanic-ms</a></p>
 <p><a href="https://github.com/songcser/sanic-ms/tree/master/examples" target="_blank" rel="external">Example</a></p>
+<h4 id="Swagger-API"><a href="#Swagger-API" class="headerlink" title="Swagger API"></a>Swagger API</h4><p><img src="https://github.com/songcser/sanic-ms/raw/master/examples/images/1514528294957.jpg" alt="image"></p>
+<h4 id="Zipkin-Server"><a href="#Zipkin-Server" class="headerlink" title="Zipkin Server"></a>Zipkin Server</h4><p><img src="https://github.com/songcser/sanic-ms/raw/master/examples/images/1514528423339.jpg" alt="image"><br><img src="https://github.com/songcser/sanic-ms/raw/master/examples/images/1514528479787.jpg" alt="image"></p>
 <h1 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h1><blockquote>
 <p>使用sanic异步框架，有较高的性能，但是使用不当会造成blocking, 对于有IO请求的都要选用异步库。<strong>添加库要慎重</strong>。<br>sanic使用uvloop异步驱动，uvloop基于libuv使用Cython编写，性能比nodejs还要高。</p>
 </blockquote>
